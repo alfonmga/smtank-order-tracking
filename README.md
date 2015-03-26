@@ -1,2 +1,2 @@
-# Order tracking system for SMTank.com website
+# Order tracking system for SMTank.com
 In progress..
