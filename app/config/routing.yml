@@ -5,3 +5,8 @@ order_tracking_backend:
 order_tracking_frontend:
     resource: "@OrderTrackingFrontendBundle/Resources/config/routing.yml"
     prefix:   /
+
+order_tracking_pedido:
+    resource: "@OrderTrackingFrontendBundle/Controller"
+    type:     annotation
+
