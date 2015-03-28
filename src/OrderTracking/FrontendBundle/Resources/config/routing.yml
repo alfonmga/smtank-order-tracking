@@ -1,0 +1,11 @@
+order_tracking_frontend_homepage:
+    path:     /
+    defaults: { _controller: OrderTrackingFrontendBundle:Sitio:index }
+
+order_tracking_frontend_pedido:
+    path:     /pedido/{id}
+    defaults: { _controller: OrderTrackingFrontendBundle:Sitio:pedido }
+
+order_tracking_frontend_buscador:
+    path:     /buscador/{id}
+    defaults: { _controller: OrderTrackingFrontendBundle:Sitio:buscar }
