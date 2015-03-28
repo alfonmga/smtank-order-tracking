@@ -5,7 +5,3 @@ order_tracking_backend:
 order_tracking_frontend:
     resource: "@OrderTrackingFrontendBundle/Resources/config/routing.yml"
     prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
