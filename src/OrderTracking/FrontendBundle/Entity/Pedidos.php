@@ -52,16 +52,30 @@ class Pedidos
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_producto", type="string")
+     * @ORM\Column(name="nombre_producto", type="string", length=255)
      */
     private $nombreProducto;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="precio_producto", type="integer")
+     * @ORM\Column(name="precio_producto", type="string", length=255)
      */
     private $precioProducto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado_pedido", type="string", length=255)
+     */
+    private $estadoPedido;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo_seguimiento", type="string", length=255)
+     */
+    private $codigoSeguimiento;
 
 
     /**
@@ -182,7 +196,7 @@ class Pedidos
     /**
      * Get nombreProducto
      *
-     * @return string
+     * @return string 
      */
     public function getNombreProducto()
     {
@@ -192,7 +206,7 @@ class Pedidos
     /**
      * Set precioProducto
      *
-     * @param integer $precioProducto
+     * @param string $precioProducto
      * @return Pedidos
      */
     public function setPrecioProducto($precioProducto)
@@ -205,10 +219,56 @@ class Pedidos
     /**
      * Get precioProducto
      *
-     * @return integer 
+     * @return string
      */
     public function getPrecioProducto()
     {
         return $this->precioProducto;
+    }
+
+    /**
+     * Set estadoPedido
+     *
+     * @param string $estadoPedido
+     * @return Pedidos
+     */
+    public function setEstadoPedido($estadoPedido)
+    {
+        $this->estadoPedido = $estadoPedido;
+
+        return $this;
+    }
+
+    /**
+     * Get estadoPedido
+     *
+     * @return string 
+     */
+    public function getEstadoPedido()
+    {
+        return $this->estadoPedido;
+    }
+
+    /**
+     * Set codigoSeguimiento
+     *
+     * @param string $codigoSeguimiento
+     * @return Pedidos
+     */
+    public function setCodigoSeguimiento($codigoSeguimiento)
+    {
+        $this->codigoSeguimiento = $codigoSeguimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoSeguimiento
+     *
+     * @return string 
+     */
+    public function getCodigoSeguimiento()
+    {
+        return $this->codigoSeguimiento;
     }
 }

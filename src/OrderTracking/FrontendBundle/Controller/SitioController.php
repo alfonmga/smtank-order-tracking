@@ -11,14 +11,4 @@ class SitioController extends Controller
     {
         return $this->render('OrderTrackingFrontendBundle:Frontend:index.html.twig');
     }
-
-    public function pedidoAction($id)
-    {
-        return $this->render('OrderTrackingFrontendBundle:Frontend:pedido.html.twig', array('id' => $id));
-    }
-
-    public function buscarAction($id)
-    {
-        return new Response($id);
-    }
 }

@@ -4,8 +4,21 @@
 {% block stylesheets %}{% endblock %}
 {% block body %}
     <h1 style="text-align: center;">Página de inicio</h1>
-    <div>
-
+    <div style="text-align: center">
+        <input type="text" id="codigoSeguimiento" placeholder="#Número de seguimiento" style="width: 300px;">
+    <br>
+    <br>
+    <button class="btn btn-primary" id="localizarPedido">Ver estado</button>
     </div>
 {% endblock %}
 {% block javascripts %}{% endblock %}
+{% block afterjavascript %}<script type="text/javascript">
+    $('#localizarPedido').click(function(){
+        var codigoseguimiento = document.getElementById("codigoSeguimiento").value;
+        var currenlocation = window.location.href;
+        if (currenlocation.slice(-1) == '/')
+            window.location.assign(window.location.href + "pedido/" + codigoseguimiento);
+        else
+            window.location.assign(window.location.href + "/pedido/" + codigoseguimiento);
+    });
+</script>{% endblock %}
