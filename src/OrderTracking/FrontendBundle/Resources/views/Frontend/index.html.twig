@@ -17,8 +17,8 @@
         var codigoseguimiento = document.getElementById("codigoSeguimiento").value;
         var currenlocation = window.location.href;
         if (currenlocation.slice(-1) == '/')
-            window.location.replace(window.location.href + "pedido/" + codigoseguimiento);
+            window.location.assign(window.location.href + "pedido/" + codigoseguimiento);
         else
-            window.location.replace(window.location.href + "/pedido/" + codigoseguimiento);
+            window.location.assign(window.location.href + "/pedido/" + codigoseguimiento);
     });
 </script>{% endblock %}
