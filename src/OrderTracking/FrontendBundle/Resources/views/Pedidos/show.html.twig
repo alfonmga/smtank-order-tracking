@@ -40,8 +40,10 @@
             <th>Estadopedido</th>
             {% if entity.estadoPedido == 'pendiente' %}
                 <td><span class="label label-warning">{{ entity.estadoPedido }}</span></td>
-            {% else %}
-                <td>{{ entity.estadoPedido }}</td>
+            {% elseif entity.estadoPedido == 'completado' %}
+                <td><span class="label label-success">{{ entity.estadoPedido }}</span></td>
+            {% elseif entity.estadoPedido == 'cancelado' %}
+                <td><span class="label label-danger">{{ entity.estadoPedido }}</span></td>
             {% endif %}
         </tr>
         <tr>
