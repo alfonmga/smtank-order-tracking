@@ -1,24 +1,126 @@
 {% extends "::base.html.twig" %}
-{% block title %}My homepage title{% endblock %}
-{% block description %}My meta desc for SEO!{% endblock %}
-{% block stylesheets %}{% endblock %}
+{% block title %}Localiza tu pedido - SMTank.com.{% endblock %}
+{% block description %}Accede al localizador en tiempo real de pedidos de SMTank.com.{% endblock %}
+{% block stylesheets %}
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .social {
+        width: 100%;
+        top: 50%;
+        text-align: center;
+    }
+
+    .social .link {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 2px dashed white;
+        background-clip: content-box;
+        padding: 10px;
+        transition: .5s;
+        color: #D7D0BE;
+        margin-left: 15px;
+        margin-right: 15px;
+        text-shadow:
+        0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 1px 0 rgba(255, 255, 255, 0.2);
+        font-size: 70px;
+    }
+
+    .social .link span {
+        display: block;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+    }
+
+    .social .link:hover {
+        padding: 20px;
+        color: white;
+        margin-left: -5px;
+        -webkit-transform: translateX(10px) rotate(360deg);
+    }
+
+    .social .link.google-plus {
+        background-color: tomato;
+        color: white;
+    }
+
+    .social .link.twitter {
+        background-color: #00ACEE;
+        color: white;
+    }
+
+    .social .link.facebook {
+        background-color: #3B5998;
+        color: white;
+    }
+
+
+</style>
+{% endblock %}
 {% block body %}
-    <h1 style="text-align: center;">Página de inicio</h1>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=""><b>Localizador de pedidos - SMTank.com</b></a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ url('order_tracking_frontend_homepage') }}">Página de inicio</a></li>
+                        <li><a href="http://smtank.com">Volver a la tienda</a></li>
+            </div>
+        </nav>
+    </header>
+    <div class="container" style="padding: 60px 15px 0;">
+    <p align="center"><img src="{{ asset('bundles/ordertrackingfrontend/images/logo_smtank.png', version='1.0', absolute=true) }}" alt="Logo, SMTank.com." width="250" height="128"></p>
+    <h1 style="text-align: center;">Seguimiento de pedidos</h1>
     <div style="text-align: center">
-        <input type="text" id="codigoSeguimiento" placeholder="#Número de seguimiento" style="width: 300px;">
+        <input type="text" id="codigoSeguimiento" placeholder="Introduce un número de pedido" style="width: 300px; text-align: center;">
     <br>
     <br>
     <button class="btn btn-primary" id="localizarPedido">Ver estado</button>
     </div>
+    </div>
+    <br>
+    <br>
+    <p style="text-align: center; font-size: medium;">Síguenos en:</p>
+    <br>
+    <div class="social">
+        <a href="https://facebook.com/SocMediaTank" class="link facebook" target="_parent"><span class="fa fa-facebook-square"></span></a>
+        <a href="https://twitter.com/SMTank" class="link twitter" target="_parent"><span class="fa fa-twitter"></span></a>
+        <a href="https://plus.google.com/+SMTankWeb" class="link google-plus" target="_parent"><span class="fa fa-google-plus-square"></span></a>
+    </div>
+    <footer class="footer" style="  position: absolute; bottom: 0; width: 100%; height: 60px; background-color: #f5f5f5;">
+        <div class="container" style="padding-right: 15px; padding-left: 15px;">
+            <p class="text-muted" style="margin: 20px 0;">Copyright © {{ 'now'|date('Y') }} <a href="http://smtank.com">SMTank.com</a>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 {% endblock %}
 {% block javascripts %}{% endblock %}
 {% block afterjavascript %}<script type="text/javascript">
     $('#localizarPedido').click(function(){
         var codigoseguimiento = document.getElementById("codigoSeguimiento").value;
-        var currenlocation = window.location.href;
-        if (currenlocation.slice(-1) == '/')
-            window.location.assign(window.location.href + "pedido/" + codigoseguimiento);
+        if (codigoseguimiento) {
+            var currenlocation = window.location.href;
+            if (currenlocation.slice(-1) == '/')
+                window.location.assign(window.location.href + "pedido/" + codigoseguimiento);
+            else
+                window.location.assign(window.location.href + "/pedido/" + codigoseguimiento);
+        }
         else
-            window.location.assign(window.location.href + "/pedido/" + codigoseguimiento);
+        alert('Error: No has introducido ningún código de seguimiento.');
     });
 </script>{% endblock %}
