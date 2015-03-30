@@ -31,7 +31,9 @@ class PedidosController extends Controller
         $entity = $em->getRepository('OrderTrackingFrontendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $id));
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Pedidos entity.');
+
+            return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
+
         }
 
         return array(

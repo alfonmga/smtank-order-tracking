@@ -4,53 +4,76 @@
 {% block index %}noindex, nofollow{% endblock %}
 {% block stylesheets %}{% endblock %}
 {% block body %}
-    <h1>Pedidos</h1>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=""><b>Localizador de pedidos - SMTank.com</b></a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('order_tracking_frontend_homepage') }}">Página de inicio</a></li>
+                        <li><a href="http://smtank.com">Volver a la tienda</a></li>
+                </div>
+        </nav>
+    </header>
+    <div class="container" style="padding: 60px 15px 0;">
+        <h1>Información sobre tu pedido (ID: {{ entity.codigoSeguimiento }})</h1>
 
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Fechainicio</th>
-            <td>{{ entity.fechaInicio|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Fechacompletado</th>
-            <td>{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}</td>
-        </tr>
-        <tr>
-            <th>Nombrecliente</th>
-            <td>{{ entity.nombreCliente }}</td>
-        </tr>
-        <tr>
-            <th>Emailcliente</th>
-            <td>{{ entity.emailCliente }}</td>
-        </tr>
-        <tr>
-            <th>Nombreproducto</th>
-            <td>{{ entity.nombreProducto }}</td>
-        </tr>
-        <tr>
-            <th>Precioproducto</th>
-            <td>{{ entity.precioProducto }}</td>
-        </tr>
-        <tr>
-            <th>Estadopedido</th>
-            {% if entity.estadoPedido == 'pendiente' %}
-                <td><span class="label label-warning">{{ entity.estadoPedido }}</span></td>
-            {% elseif entity.estadoPedido == 'completado' %}
-                <td><span class="label label-success">{{ entity.estadoPedido }}</span></td>
-            {% elseif entity.estadoPedido == 'cancelado' %}
-                <td><span class="label label-danger">{{ entity.estadoPedido }}</span></td>
+        <table class="table table-hover">
+            <tbody>
+            <tr>
+                <th>Fecha de inicio</th>
+                <td>{{ entity.fechaInicio|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            {% if entity.estadoPedido == 'completado' %}
+            <tr>
+                <th>Fecha completado</th>
+                <td>{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}</td>
+            </tr>
             {% endif %}
-        </tr>
-        <tr>
-            <th>Codigoseguimiento</th>
-            <td>{{ entity.codigoSeguimiento }}</td>
-        </tr>
-        </tbody>
-    </table>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombreCliente }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.emailCliente }}</td>
+            </tr>
+            <tr>
+                <th>Nombre del producto</th>
+                <td>{{ entity.nombreProducto }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ entity.precioProducto }}€</td>
+            </tr>
+            <tr>
+                <th>Estado actual del pedido</th>
+                {% if entity.estadoPedido == 'pendiente' %}
+                    <td><span class="label label-warning">{{ entity.estadoPedido }}</span></td>
+                {% elseif entity.estadoPedido == 'en progreso' %}
+                    <td><span class="label label-primary">{{ entity.estadoPedido }}</span></td>
+                {% elseif entity.estadoPedido == 'completado' %}
+                    <td><span class="label label-success">{{ entity.estadoPedido }}</span></td>
+                {% elseif entity.estadoPedido == 'cancelado' %}
+                    <td><span class="label label-danger">{{ entity.estadoPedido }}</span></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer" style="  position: absolute; bottom: 0; width: 100%; height: 60px; background-color: #f5f5f5;">
+        <div class="container" style="padding-right: 15px; padding-left: 15px;">
+            <p class="text-muted" style="margin: 20px 0;">Copyright © {{ 'now'|date('Y') }} <a href="http://smtank.com">SMTank.com</a>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 {% endblock %}
 {% block javascripts %}{% endblock %}
