@@ -10,3 +10,5 @@ order_tracking_pedido:
     resource: "@OrderTrackingFrontendBundle/Controller"
     type:     annotation
 
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"

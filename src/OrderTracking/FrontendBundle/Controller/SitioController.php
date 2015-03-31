@@ -19,13 +19,12 @@ class SitioController extends Controller
         $request = $this->getRequest();
 
         if ($request->isMethod('POST')) {
-
             $referer = $request->headers->get('referer');
             $message = \Swift_Message::newInstance()
-                ->setSubject('Contact enquiry from symblog')
+                ->setSubject('Mensaje desde página de seguimiento - PEDIDO: ' . $request->request->get('id_pedido'))
                 ->setFrom('contacto@smtank.com')
-                ->setTo('alfonsoimbusiness@gmail.com')
-                ->setBody('probando..');
+                ->setTo('contacto@smtank.com')
+                ->setBody('Nombre: ' . $request->request->get('nombre_cliente') . 'Email: ' . $request->request->get('email_cliente') . ' Mensaje: ' .  $request->request->get('mensaje'));
             $this->get('mailer')->send($message);
 
             $request->getSession()->getFlashBag()->add('success', 'Hemos recibido correctamente tu mensaje :-)');

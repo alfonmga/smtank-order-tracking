@@ -68,13 +68,6 @@
             </tr>
             </tbody>
         </table>
-        {% for label, flashes in app.session.flashbag.all %}
-            {% for flash in flashes %}
-                <div class="alert alert-{{ label }}">
-                    {{ flash }}
-                </div>
-            {% endfor %}
-        {% endfor %}
         <div class="col-xs-6">
         <h2 style="font-size: 25px; color: #545454;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Historial</h2>
             <table class="table table-condensed">
@@ -103,6 +96,13 @@
             </table>
         </div>
         <div class="col-xs-6" style="text-align: center;">
+            {% for label, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    <div class="alert alert-{{ label }}">
+                        <b> {{ flash }} </b>
+                    </div>
+                {% endfor %}
+            {% endfor %}
         <h2 style="font-size: 25px;">¿Tienes alguna duda?</h2>
         <form action="{{ path('order_tracking_frontend_sendemail') }}" method="POST" >
             <input type="hidden" name="nombre_cliente" value="{{ entity.nombreCliente }}">
