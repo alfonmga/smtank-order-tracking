@@ -33,7 +33,6 @@ class PedidosController extends Controller
         if (!$entity) {
 
             return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
-
         }
 
         return array(
