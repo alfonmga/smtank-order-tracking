@@ -35,7 +35,7 @@
             {% if entity.estadoPedido == 'completado' %}
             <tr>
                 <th>Fecha completado</th>
-                <td>{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.fechaCompletado|date('d-m-Y H:i:s') }}</td>
             </tr>
             {% endif %}
             <tr>
@@ -57,23 +57,66 @@
             <tr>
                 <th>Estado actual del pedido</th>
                 {% if entity.estadoPedido == 'pendiente' %}
-                    <td><span class="label label-warning">{{ entity.estadoPedido }}</span></td>
+                    <td><span class="label label-warning">Pendiente</span></td>
                 {% elseif entity.estadoPedido == 'en progreso' %}
-                    <td><span class="label label-primary">{{ entity.estadoPedido }}</span></td>
+                    <td><span class="label label-primary">En progreso</span></td>
                 {% elseif entity.estadoPedido == 'completado' %}
-                    <td><span class="label label-success">{{ entity.estadoPedido }}</span></td>
+                    <td><span class="label label-success">Completado</span></td>
                 {% elseif entity.estadoPedido == 'cancelado' %}
-                    <td><span class="label label-danger">{{ entity.estadoPedido }}</span></td>
+                    <td><span class="label label-danger">Cancelado</span></td>
                 {% endif %}
             </tr>
             </tbody>
         </table>
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-{{ label }}">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="col-xs-6">
+        <h2 style="font-size: 25px; color: #545454;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Historial</h2>
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Información</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in entity2 %}
+                    <tr>
+                        <td>{{ item.fecha|date('d-m-Y') }} <b>{{ item.fecha|date('H:i:s') }}</b></td>
+                        {% if item.estado == 'pendiente' %}
+                        <td>Ha cambiado de estado a <span class="label label-warning">Pendiente</span></td>
+                        {% elseif item.estado == 'en progreso' %}
+                            <td>Ha cambiado de estado a <span class="label label-primary">En progreso</span></td>
+                        {% elseif item.estado == 'completado' %}
+                            <td>Ha cambiado de estado a <span class="label label-success">Completado</span></td>
+                        {% elseif item.estado == 'cancelado' %}
+                            <td>Ha cambiado de estado a <span class="label label-danger">Cancelado</span></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-6" style="text-align: center;">
+        <h2 style="font-size: 25px;">¿Tienes alguna duda?</h2>
+        <form action="{{ path('order_tracking_frontend_sendemail') }}" method="POST" >
+            <input type="hidden" name="nombre_cliente" value="{{ entity.nombreCliente }}">
+            <input type="hidden" name="email_cliente" value="{{ entity.emailCliente }}">
+            <input type="hidden" name="id_pedido" value="{{ entity.codigoSeguimiento }}">
+            <textarea name="mensaje" style="border: 1px solid #2585c7; margin: 5px 0; resize: none; width: 400px; height: 100px; border-radius: 4px;" placeholder="Escribe aquí tu mensaje.." required></textarea>
+            <br><input type="submit" value="Enviar mensaje" class="btn btn-primary">
+        </form>
+        </div>
     </div>
     <footer class="footer" style="  position: absolute; bottom: 0; width: 100%; height: 60px; background-color: #f5f5f5;">
         <div class="container" style="padding-right: 15px; padding-left: 15px;">
             <p class="text-muted" style="margin: 20px 0;">Copyright © {{ 'now'|date('Y') }} <a href="http://smtank.com">SMTank.com</a>. Todos los derechos reservados.</p>
         </div>
     </footer>
-
 {% endblock %}
 {% block javascripts %}{% endblock %}
