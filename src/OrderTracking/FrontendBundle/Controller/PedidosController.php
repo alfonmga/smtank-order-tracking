@@ -35,8 +35,11 @@ class PedidosController extends Controller
             return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
         }
 
+        $entity2 = $em->getRepository('OrderTrackingFrontendBundle:Historial')->findBy(array('idPedido' => $id), array( 'fecha' => 'DESC' ));
+
         return array(
             'entity'      => $entity,
+            'entity2'     => $entity2,
         );
     }
 }
