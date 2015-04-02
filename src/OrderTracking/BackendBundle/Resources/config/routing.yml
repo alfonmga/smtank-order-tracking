@@ -1,3 +1,0 @@
-order_tracking_backend_main:
-    path:     /backend
-    defaults: {_controller: OrderTrackingBackendBundle:Default:index}
