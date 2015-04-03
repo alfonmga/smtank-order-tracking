@@ -58,10 +58,25 @@ class DefaultController extends Controller
             $em->persist($historial);
             $em->flush();
 
-            return new Response('Success');
+            $array = array (
+                "estado" => "success",
+                "codigoSeguimiento" => "$codigoSeguimiento"
+            );
+
+            $response = new Response(json_encode($array));
+            $response->headers->set('Content-Type', 'application/json');
+
+            return $response;
         }
         else {
-            throw $this->createNotFoundException('Access denied');
+            $array = array (
+                "estado" => "denied"
+            );
+
+            $response = new Response(json_encode($array));
+            $response->headers->set('Content-Type', 'application/json');
+
+            return $response;
         }
     }
 }
