@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=""><b>Panel de administración - SMTank.com</b></a>
+                </div>
+        </nav>
+    </header>
+    <div class="container" style="padding: 60px 15px 0;">
+    <h1>Información pedido</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechainicio</th>
+                <td>{{ entity.fechaInicio|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechacompletado</th>
+                <td>{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecliente</th>
+                <td>{{ entity.nombreCliente }}</td>
+            </tr>
+            <tr>
+                <th>Emailcliente</th>
+                <td>{{ entity.emailCliente }}</td>
+            </tr>
+            <tr>
+                <th>Nombreproducto</th>
+                <td>{{ entity.nombreProducto }}</td>
+            </tr>
+            <tr>
+                <th>Precioproducto</th>
+                <td>{{ entity.precioProducto }}</td>
+            </tr>
+            <tr>
+                <th>Estadopedido</th>
+                <td>{{ entity.estadoPedido }}</td>
+            </tr>
+            <tr>
+                <th>Codigoseguimiento</th>
+                <td>{{ entity.codigoSeguimiento }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('backend') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('backend_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+</div>
+    <footer class="footer" style="  position: absolute; bottom: 0; width: 100%; height: 60px; background-color: #f5f5f5;">
+        <div class="container" style="padding-right: 15px; padding-left: 15px;">
+            <p class="text-muted" style="margin: 20px 0;">Copyright © {{ 'now'|date('Y') }} <a href="http://smtank.com">SMTank.com</a>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+{% endblock %}
