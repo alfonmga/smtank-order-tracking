@@ -27,7 +27,7 @@ class DefaultController extends Controller
 
             $codigoSeguimiento = '';
             for ($i = 0; $i < 12; $i++) {
-                $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
+                $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
             }
 
             $entity = $em->getRepository('OrderTrackingFrontendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $codigoSeguimiento));
@@ -35,7 +35,7 @@ class DefaultController extends Controller
             if ($entity) {
                 $codigoSeguimiento = '';
                 for ($i = 0; $i < 12; $i++) {
-                    $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
+                    $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
                 }
             }
 
