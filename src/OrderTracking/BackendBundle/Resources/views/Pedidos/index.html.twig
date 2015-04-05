@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
-
+{% block title %}Backend - SMTank.com{% endblock %}
+{% block description %}{% endblock %}
+{% block index %}noindex, nofollow{% endblock %}
 {% block body -%}
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -43,7 +45,15 @@
                 <td>{{ entity.emailCliente }}</td>
                 <td>{{ entity.nombreProducto }}</td>
                 <td>{{ entity.precioProducto }}</td>
-                <td>{{ entity.estadoPedido }}</td>
+                <td>{% if entity.estadoPedido == 'pendiente' %}
+                <span class="label label-warning">Pendiente</span>
+                {% elseif entity.estadoPedido == 'en progreso' %}
+                <span class="label label-primary">En progreso</span>
+                {% elseif entity.estadoPedido == 'completado' %}
+                <span class="label label-success">Completado</span>
+                {% elseif entity.estadoPedido == 'cancelado' %}
+                 <span class="label label-danger">Cancelado</span>
+                {% endif %}</td>
                 <td>{{ entity.codigoSeguimiento }}</td>
                 <td>
                 <ul>
