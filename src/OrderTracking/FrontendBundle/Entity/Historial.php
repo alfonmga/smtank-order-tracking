@@ -5,7 +5,7 @@ namespace OrderTracking\FrontendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Historial Prueba
+ * Historial
  *
  * @ORM\Table()
  * @ORM\Entity

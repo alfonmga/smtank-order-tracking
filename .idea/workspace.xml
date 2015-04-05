@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9031ba0-23c4-473e-bdd1-266470bd829f" name="Default" comment="update gitignore">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Controller/DefaultController.php" />
+    <list default="true" id="b9031ba0-23c4-473e-bdd1-266470bd829f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Entity/Historial.php" afterPath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Entity/Historial.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Controller/PedidosController.php" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Controller/PedidosController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/PedidosControllerTest.php" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/PedidosControllerTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Form/PedidosType.php" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Form/PedidosType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/SeguridadControllerTest.php" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/SeguridadControllerTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/css/bootstrap3.3.4/bootstrap.min.js" afterPath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/css/bootstrap3.3.4/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/edit.html.twig" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/edit.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/index.html.twig" afterPath="$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/views/Frontend/index.html.twig" afterPath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/views/Frontend/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/js/jquery1.11.2/jquery.min.js" afterPath="$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/js/jquery1.11.2/jquery.min.js" />
@@ -42,101 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1125">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/new.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="330">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/show.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1320">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PedidosControllerTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/PedidosControllerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="930">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SeguridadControllerTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/SeguridadControllerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="270">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Historial.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Entity/Historial.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="1950">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/css/bootstrap3.3.4/bootstrap.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-              <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/js/jquery1.11.2/jquery.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-              <caret line="0" column="87" selection-start-line="0" selection-start-column="87" selection-end-line="0" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="404.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/views/Frontend/404.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5833335" vertical-offset="208" max-vertical-offset="645">
-              <caret line="26" column="108" selection-start-line="26" selection-start-column="108" selection-end-line="26" selection-end-column="108" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/views/Frontend/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.039577838" vertical-offset="0" max-vertical-offset="1980">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -146,6 +52,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="PUSH_TAGS">
       <GitPushTagMode />
     </option>
@@ -990,7 +901,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428180523029</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Main files">
+      <created>1428227070951</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1428227070951</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -1017,7 +934,8 @@
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38755304" sideWeight="0.61945635" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38865247" sideWeight="0.61945635" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32531825" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281471" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1026,14 +944,13 @@
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38755304" sideWeight="0.38054362" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38865247" sideWeight="0.38054362" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32765958" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20509194" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907802" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1068,9 +985,9 @@
     <MESSAGE value="New backend API" />
     <MESSAGE value="Added JSON support to backend API" />
     <MESSAGE value="Added email notifications +" />
-    <MESSAGE value="Main files" />
     <MESSAGE value="update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
+    <MESSAGE value="Main files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Main files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1291,6 +1208,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4090909" vertical-offset="2523" max-vertical-offset="4200">
           <caret line="179" column="27" selection-start-line="179" selection-start-column="22" selection-end-line="179" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1370,71 +1288,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1125">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1110">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="379">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Resources/views/Pedidos/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1320">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/PedidosControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="930">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.3166227" vertical-offset="0" max-vertical-offset="915">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/BackendBundle/Tests/Controller/SeguridadControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="270">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.27704486" vertical-offset="0" max-vertical-offset="379">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Entity/Historial.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="1950">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.27704486" vertical-offset="0" max-vertical-offset="1950">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/css/bootstrap3.3.4/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.074441686" vertical-offset="0" max-vertical-offset="403">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/public/js/jquery1.11.2/jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-          <caret line="0" column="87" selection-start-line="0" selection-start-column="87" selection-end-line="0" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="403">
+          <caret line="0" column="80" selection-start-line="0" selection-start-column="80" selection-end-line="0" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/views/Frontend/404.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5833335" vertical-offset="208" max-vertical-offset="645">
+        <state vertical-scroll-proportion="1.0290238" vertical-offset="0" max-vertical-offset="645">
           <caret line="26" column="108" selection-start-line="26" selection-start-column="108" selection-end-line="26" selection-end-column="108" />
           <folding />
         </state>
@@ -1442,8 +1360,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrderTracking/FrontendBundle/Resources/views/Frontend/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.039577838" vertical-offset="0" max-vertical-offset="1980">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
