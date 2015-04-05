@@ -189,6 +189,7 @@ class PedidosController extends Controller
         }
         $currentEstado = $entity->getEstadoPedido();
         $emailCliente = $entity->getEmailCliente();
+        $nombreCliente = $entity->getNombreCliente();
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
@@ -205,11 +206,10 @@ class PedidosController extends Controller
                 $em->persist($historial);
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('El estado de tu pedido ha sido actualizado')
+                    ->setSubject('Pedido actualizado - SMTank.com')
                     ->setFrom('contacto@smtank.com')
-                    ->setSender('SMTank.com')
                     ->setTo($emailCliente)
-                    ->setBody('texto e-mail');
+                    ->setBody('Hola ' . $nombreCliente . ',<br><br> El estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) ha sido actualizado.<br>Entra en http://pedidos.smtank.com para ver más detalles sobre tu pedido. <br><br>Un saludo,<br>SMTank.com.', "text/html");
                 $this->get('mailer')->send($message);
 
             }
