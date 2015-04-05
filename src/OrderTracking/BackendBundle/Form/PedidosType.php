@@ -11,6 +11,7 @@ class PedidosType extends AbstractType
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
+     * Prueba
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

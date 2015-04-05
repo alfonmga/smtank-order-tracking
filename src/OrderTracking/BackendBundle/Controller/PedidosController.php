@@ -26,6 +26,7 @@ class PedidosController extends Controller
      * @Route("/", name="backend")
      * @Method("GET")
      * @Template()
+     * Prueba..
      */
     public function indexAction()
     {
@@ -209,7 +210,7 @@ class PedidosController extends Controller
                     ->setFrom('contacto@smtank.com')
                     ->setSender('SMTank.com')
                     ->setTo($emailCliente)
-                    ->setBody('texto');
+                    ->setBody('texto e-mail');
                 $this->get('mailer')->send($message);
 
             }

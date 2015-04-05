@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class PedidosControllerTest extends WebTestCase
 {
     /*
+     * Prueba
     public function testCompleteScenario()
     {
         // Create a new client to browse the application
