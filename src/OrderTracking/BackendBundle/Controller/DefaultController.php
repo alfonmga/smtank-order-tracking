@@ -18,7 +18,6 @@ class DefaultController extends Controller
      *
      * @Route("api/crear/{nombre}/{email}/{nombreproducto}/{precio}/{secretkey}", name="backend_api")
      * @Method("POST")
-     * Prueba..
      */
     public function apiAction($nombre, $email, $nombreproducto, $precio, $secretkey)
     {

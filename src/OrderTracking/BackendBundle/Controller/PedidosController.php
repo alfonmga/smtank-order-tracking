@@ -26,7 +26,6 @@ class PedidosController extends Controller
      * @Route("/", name="backend")
      * @Method("GET")
      * @Template()
-     * Prueba..
      */
     public function indexAction()
     {
