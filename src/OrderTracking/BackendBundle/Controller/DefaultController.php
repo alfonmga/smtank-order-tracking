@@ -14,7 +14,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * Backend API & crear pedidos nuevos.
+     * Simple backend API & crear pedidos nuevos.
      *
      * @Route("api/crear/{nombre}/{email}/{nombreproducto}/{precio}/{secretkey}", name="backend_api")
      * @Method("POST")
