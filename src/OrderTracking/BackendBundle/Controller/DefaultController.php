@@ -21,7 +21,7 @@ class DefaultController extends Controller
      */
     public function apiAction($nombre, $email, $nombreproducto, $precio, $secretkey)
     {
-        if ($secretkey === 'x903131xahjwhe811aZ2a') {
+        if ($secretkey === 'yoursecretkeyhere') {
 
             $em = $this->getDoctrine()->getManager();
 
