@@ -53,6 +53,7 @@ $ sudo composer update
 ```
 ### Step 5: Build database schemas
 ```
+$ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
 ```
 ### Step 6: Add a new order through HTTP POST <sub>(You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)</sub>
