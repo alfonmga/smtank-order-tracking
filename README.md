@@ -49,7 +49,7 @@ Folder app/cache/ and app/logs/ needs write permissions.
 Please follow this instructions: http://symfony.com/doc/current/book/installation.html#book-installation-permissions
 ### Step 4: Run composer
 ```
-$ composer update
+$ sudo composer update
 ```
 ### Step 5: Build database schemas
 ```
