@@ -60,3 +60,5 @@ http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{produ
 $ php app/console fos:user:create testuser test@example.com p@ssword
 $ php app/console fos:user:promote testuser --super
 ```
+
+Access back-end: http://mydomain.com/backend
