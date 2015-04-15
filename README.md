@@ -13,7 +13,7 @@ In progress..
 ```
 $ git clone https://github.com/alfonsomga/smtank-order-tracking
 ```
-### Step 2: Create parameters.yml and parameters.yml.dist files in app/config folder (Do not forget to add you database..etc info)
+### Step 2: Create parameters.yml and parameters.yml.dist files in app/config folder <sub>(Do not forget to add you database..etc info)</sub>
 ```
 parameters:
     database_driver: pdo_mysql
