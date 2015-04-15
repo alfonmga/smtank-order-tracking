@@ -74,3 +74,5 @@ $ php app/console fos:user:promote testuser --super
 ```
 
 Access to back-end admin panel: http://mydomain.com/backend
+
+That's all, if you have any problem let me know and I'll be happy to help you. 😉
