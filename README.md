@@ -38,7 +38,7 @@ $ composer update
 ```
 ...
 ```
-### Step 5: Add a new order through HTTP POST (You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)
+### Step 5: Add a new order through HTTP POST <sub>(You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)</sub>
 ```
 http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{product_price}/{secretkey}
 ```
