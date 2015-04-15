@@ -42,7 +42,7 @@ $ composer update
 ```
 http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{product_price}/{secretkey}
 ```
-### Step 6: Create an admin use for back-end zone
+### Step 6: Create an admin user for back-end zone
 ```
 $ php app/console fos:user:create testuser test@example.com p@ssword
 $ php app/console fos:user:promote testuser --super
