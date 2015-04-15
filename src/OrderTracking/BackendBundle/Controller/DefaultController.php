@@ -30,7 +30,7 @@ class DefaultController extends Controller
                 $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
             }
 
-            $entity = $em->getRepository('OrderTrackingFrontendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $codigoSeguimiento));
+            $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $codigoSeguimiento));
 
             if ($entity) {
                 $codigoSeguimiento = '';
