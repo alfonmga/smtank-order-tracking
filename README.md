@@ -1,4 +1,6 @@
+<p align="center"><img width="250" height="128" src="http://i.imgur.com/AtFS9Ie.png"/></p>
 # Order tracking system for SMTank.com
+
 ### Front-end and Back-end images
 
 
