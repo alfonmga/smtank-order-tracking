@@ -43,15 +43,19 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
 ```
-### Step 3: Run composer
+### Step 3: Permissions
+Folder app/cache/ and app/logs/ needs write permissions.
+
+Please follow this instructions: http://symfony.com/doc/current/book/installation.html#book-installation-permissions
+### Step 4: Run composer
 ```
 $ composer update
 ```
-### Step 4: Build database schemas
+### Step 5: Build database schemas
 ```
 $ php app/console doctrine:schema:create
 ```
-### Step 5: Add a new order through HTTP POST <sub>(You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)</sub>
+### Step 6: Add a new order through HTTP POST <sub>(You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)</sub>
 ```
 http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{product_price}/{secretkey}
 ```
@@ -62,7 +66,7 @@ Example successful response:
 "codigoSeguimiento": "JOT6CN57664C"
 }
 ```
-### Step 6: Create an admin user for back-end zone
+### Step 7: Create an admin user for back-end zone
 ```
 $ php app/console fos:user:create testuser test@example.com p@ssword
 $ php app/console fos:user:promote testuser --super
