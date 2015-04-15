@@ -61,4 +61,4 @@ $ php app/console fos:user:create testuser test@example.com p@ssword
 $ php app/console fos:user:promote testuser --super
 ```
 
-Access back-end: http://mydomain.com/backend
+Access to back-end admin panel: http://mydomain.com/backend
