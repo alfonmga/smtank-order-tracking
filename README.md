@@ -55,6 +55,13 @@ $ php app/console doctrine:schema:create
 ```
 http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{product_price}/{secretkey}
 ```
+Example successful response:
+```
+{
+"estado": "success",
+"codigoSeguimiento": "JOT6CN57664C"
+}
+```
 ### Step 6: Create an admin user for back-end zone
 ```
 $ php app/console fos:user:create testuser test@example.com p@ssword
