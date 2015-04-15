@@ -8,7 +8,7 @@ Demo live: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C
 ### Front-end and Back-end images
 ### <sub>- Homepage</sub>
 <img src="http://i.imgur.com/iyUsbiI.png">
-### <sub>- 404 Order tracking code not found</sub>
+### <sub>- 404 order tracking code not found</sub>
 <img src="http://i.imgur.com/382o0Lu.png">
 ### <sub>- Order information</sub>
 <img src="http://i.imgur.com/y7SXdEV.png">
