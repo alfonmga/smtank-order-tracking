@@ -1,7 +1,10 @@
 <p align="center"><img width="250" height="128" src="http://i.imgur.com/AtFS9Ie.png"/></p>
 # Order tracking system for SMTank.com
 ### Information
-Project done with PHP Symfony2 2.6.5 framework.
+Project done with PHP Symfony2 version 2.6.5 framework.
+
+
+Demo live: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C).
 ### Front-end and Back-end images
 
 
