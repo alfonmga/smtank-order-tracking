@@ -31,7 +31,7 @@ $ git clone https://github.com/alfonsomga/smtank-order-tracking
 parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
-    database_port: '8889'
+    database_port: '3306'
     database_name: order_tracking
     database_user: ~
     database_password: ~
