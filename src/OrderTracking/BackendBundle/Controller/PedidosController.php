@@ -213,6 +213,12 @@ class PedidosController extends Controller
                 $this->get('mailer')->send($message);
 
             }
+            if ($estadoForm == 'completado')
+            {
+                $actualizar = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
+                $actualizar->setFechaCompletado(date_create(date('Y-m-d H:i:s')));
+                $em->persist($actualizar);
+            }
 
             $em->flush();
             return $this->redirect($this->generateUrl('backend_edit', array('id' => $id)));
