@@ -5,7 +5,7 @@ Project done with PHP Symfony2 version 2.6.5 framework.
 
 
 Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C).
-### Front-end and Back-end screenshots
+### Screenshots (click to enlarge)
 ---------------------------------
 
 ### Front-end
