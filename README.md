@@ -6,16 +6,15 @@ Project done with PHP Symfony2 version 2.6.5 framework.
 
 Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C).
 ### Front-end and Back-end images
-### <sub>- Homepage</sub>
-<img src="http://i.imgur.com/iyUsbiI.png">
-### <sub>- 404 order tracking code not found</sub>
-<img src="http://i.imgur.com/382o0Lu.png">
-### <sub>- Order information</sub>
-<img src="http://i.imgur.com/y7SXdEV.png">
-### <sub>- Back-end orders management</sub>
-<img src="http://i.imgur.com/sKXNWTT.png">
-### <sub>- Back-end view/edit order details</sub>
-<img src="http://i.imgur.com/lDS5Ntk.png">
+---------------------------------
+
+### Front-end
+![Homepage](http://i.imgur.com/iyUsbiI.png)
+![404 Page](http://i.imgur.com/382o0Lu.png)
+![Order information](http://i.imgur.com/y7SXdEV.png)
+### Back-end
+![Back-end order management](http://i.imgur.com/sKXNWTT.png)
+![Back-end edit order](http://i.imgur.com/Bt9hOUD.png)
 
 
 
