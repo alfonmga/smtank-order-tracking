@@ -86,7 +86,7 @@ class PedidosController extends Controller
     /**
      * Displays a form to create a new Pedidos entity.
      *
-     * @Route("/new", name="backend_new")
+     * @Route("/nuevo", name="backend_new")
      * @Method("GET")
      * @Template()
      */
