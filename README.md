@@ -14,6 +14,7 @@ Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C
 ![Order information](http://i.imgur.com/y7SXdEV.png)
 ### Back-end
 ![Back-end order management](http://i.imgur.com/sKXNWTT.png)
+![Back-end add new order](http://i.imgur.com/Rh9Stih.png)
 ![Back-end edit order](http://i.imgur.com/Bt9hOUD.png)
 
 
