@@ -21,7 +21,7 @@ Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C
 
 
 ### Installation guide
-
+----------------------
 ### Step 1: Clone the repository
 ```
 $ git clone https://github.com/alfonsomga/smtank-order-tracking
