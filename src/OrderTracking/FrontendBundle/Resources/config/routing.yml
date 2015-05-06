@@ -1,7 +1,0 @@
-order_tracking_frontend_homepage:
-    path:     /
-    defaults: { _controller: OrderTrackingFrontendBundle:Sitio:index }
-
-order_tracking_frontend_sendemail:
-    path:     /contactar
-    defaults: {_controller: OrderTrackingFrontendBundle:Sitio:contactar }
