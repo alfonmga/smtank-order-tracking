@@ -5,15 +5,26 @@ namespace OrderTracking\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
 class SitioController extends Controller
 {
+    /**
+     * Inicio controller.
+     *
+     * @Route("/", name="order_tracking_frontend_homepage")
+     */
     public function indexAction()
     {
         return $this->render('OrderTrackingFrontendBundle:Frontend:index.html.twig');
     }
 
+    /**
+     * Contact controller.
+     *
+     * @Route("/contactar", name="order_tracking_frontend_sendemail")
+     */
     public function contactarAction()
     {
         $request = $this->getRequest();

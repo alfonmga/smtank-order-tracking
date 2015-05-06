@@ -1,14 +1,7 @@
-order_tracking_backend:
-    resource: "@OrderTrackingBackendBundle/Resources/config/routing.yml"
-    prefix:   /
-
-order_tracking_frontend:
-    resource: "@OrderTrackingFrontendBundle/Resources/config/routing.yml"
-    prefix:   /
-
 order_tracking_pedido:
     resource: "@OrderTrackingFrontendBundle/Controller"
     type:     annotation
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -16,3 +9,4 @@ fos_user_security:
 order_tracking_pedido_backend:
     resource: "@OrderTrackingBackendBundle/Controller"
     type:     annotation
+

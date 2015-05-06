@@ -12,10 +12,17 @@ use OrderTracking\BackendBundle\Entity\Pedidos;
 /**
  * Pedidos controller.
  *
- * @Route("/pedido")
+ * @Route("/pedido", name="pedido_inicio")
  */
 class PedidosController extends Controller
 {
+
+    /**
+     * @Route("/", name="pedido_index")
+     */
+    public function inicioAction() {
+
+    }
 
     /**
      * Finds and displays a Pedidos entity.
