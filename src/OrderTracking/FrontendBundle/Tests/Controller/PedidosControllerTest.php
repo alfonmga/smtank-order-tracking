@@ -23,7 +23,7 @@ class PedidosControllerTest extends WebTestCase
         // Submit a fake code track
         $form = $crawler->filter('input[id="codigoSeguimiento"]')->form();
         $form['codigoSeguimiento'] = 'thiscodenotexists';
-        $botonSubmit = $crawler->selectButton('Ver estado')->form();
+        $botonSubmit = $crawler->selectButton('localizarPedido')->form();
         $crawler = $client->submit($botonSubmit);
 
         $this->assertGreaterThan(
