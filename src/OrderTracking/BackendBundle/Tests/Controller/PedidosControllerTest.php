@@ -11,8 +11,8 @@ class PedidosControllerTest extends WebTestCase
         // Create a new client to browse the application
         $client = static::createClient();
 
-        // Create a new entry in the database
+        // Client should be redirected to /login URL
         $crawler = $client->request('GET', '/backend/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /backend/");
+        $this->assertEquals(302, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /backend/");
     }
 }
