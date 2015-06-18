@@ -21,11 +21,7 @@ class PedidosControllerTest extends WebTestCase
         );
 
         // Submit a fake code track
-        $form = $crawler->filter('input[id="codigoSeguimiento"]')->form();
-        $form['codigoSeguimiento'] = 'thiscodenotexists';
-        $botonSubmit = $crawler->selectButton('localizarPedido');
-        $crawler = $client->submit($botonSubmit);
-
+        $crawler = $client->request('GET', '/pedido/G24OQ4YQ443O');
         $this->assertGreaterThan(
             0,
             $crawler->filter('html:contains("No hemos encontrado ningún pedido con ese número de seguimiento :-(")')->count()
