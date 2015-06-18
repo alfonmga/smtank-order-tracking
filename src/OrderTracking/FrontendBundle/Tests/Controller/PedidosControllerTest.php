@@ -12,11 +12,7 @@ class PedidosControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Go to the list view
-        $crawler = $client->request('GET', '/pedido/');
+        $crawler = $client->request('GET', '/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /pedido/");
-
-        // Go to the show view
-        $crawler = $client->click($crawler->selectLink('show')->link());
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code");
     }
 }
