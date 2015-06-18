@@ -11,7 +11,8 @@ branches:
 
 before_script:
   - cp app/config/parameters.yml.travis app/config/parameters.yml
-  - composer install
+  - cp app/config/parameters.yml app/config/parameters.yml.dist
+  - composer install --prefer-source
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:schema:create --env=test
 
