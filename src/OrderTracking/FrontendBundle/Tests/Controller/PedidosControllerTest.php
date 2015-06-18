@@ -27,5 +27,25 @@ class PedidosControllerTest extends WebTestCase
             $crawler->filter('html:contains("No hemos encontrado ningún pedido con ese número de seguimiento :-(")')->count()
         );
 
+        // Add an order and verify it
+        $clientNames = array(
+            "Alfonso M.",
+            "John Doe",
+            "Vladímir Putin"
+        );
+        $randName = $clientNames[array_rand($clientNames)];
+
+        $clientEmails = array(
+            "hello@alfonsomga.com",
+            "john@doe.com",
+            "putin@russia.com"
+        );
+        $randEmail = $clientEmails[array_rand($clientEmails)];
+
+        $crawler = $client->request('POST', 'api/crear/'$randName'/'$randEmail'/5000 Twitter Followers/39.95/yoursecretkeyhere');
+        $response = json_decode($client->getResponse()->getContent());
+
+        $this->assertEquals('success', $response['estado'], "ERROR: Order POST request isn't valid.");
+
     }
 }
