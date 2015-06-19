@@ -39,6 +39,8 @@ class PedidosControllerTest extends WebTestCase
         );
 
         // Add an order and verify it
+        $client2 = static::createClient();
+        $client2->followRedirects(true);
         $clientNames = array(
             "Alfonso M.",
             "John Doe",
@@ -64,8 +66,8 @@ class PedidosControllerTest extends WebTestCase
         $this->em->persist($order);
         $this->em->flush($order);
 
-        $crawler = $client->request('GET', '/pedidos/W233Q42HC4IO');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /pedido/x");
-        $this->assertNotEmpty($client->getResponse()->getContent());
+        $crawler = $client2->request('GET', '/pedidos/W233Q42HC4IO');
+        $this->assertEquals(200, $client2->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /pedido/x");
+        $this->assertNotEmpty($client2->getResponse()->getContent());
     }
 }
