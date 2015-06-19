@@ -46,7 +46,12 @@ class PedidosControllerTest extends WebTestCase
         $response = $client->getResponse();
         $responseJson = json_decode($client->getResponse(), true);
 
-        $this->assertSame('application/json', $response->headers->get('Content-Type'));
+        $this->assertTrue(
+            $client->getResponse()->headers->contains(
+                'Content-Type',
+                'application/json'
+            )
+        );
         $this->assertEquals('{"estado":"success"}', $responseJson['estado']);
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
