@@ -31,7 +31,7 @@ class Pedidos
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_completado", type="datetime")
+     * @ORM\Column(name="fecha_completado", type="datetime", nullable=true)
      */
     private $fechaCompletado;
 
