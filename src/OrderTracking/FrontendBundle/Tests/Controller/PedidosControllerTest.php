@@ -43,9 +43,11 @@ class PedidosControllerTest extends WebTestCase
         $randEmail = $clientEmails[array_rand($clientEmails)];
 
         $crawler = $client->request('POST', 'api/crear/'.$randName.'/'.$randEmail.'/5000 Twitter Followers/39.95/yoursecretkeyhere');
-        $response = json_decode($client->getResponse()->getContent());
+        $response = $client->getResponse();
+        $responseJson = json_decode($client->getResponse(), true);
 
-        $this->assertEquals('success', $response['estado'], "ERROR: Order POST request isn't valid.");
-
+        $this->assertSame('application/json', $response->headers->get('Content-Type'));
+        $this->assertEquals('{"estado":"success"}', $responseJson['estado']);
+        $this->assertNotEmpty($client->getResponse()->getContent());
     }
 }
