@@ -46,6 +46,7 @@ class PedidosControllerTest extends WebTestCase
         $response = $client->getResponse();
         $responseJson = json_decode($client->getResponse(), true);
 
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for POST api/crear/");
         $this->assertTrue(
             $client->getResponse()->headers->contains(
                 'Content-Type',
