@@ -66,7 +66,7 @@ class PedidosControllerTest extends WebTestCase
         $this->em->persist($order);
         $this->em->flush($order);
 
-        $crawler = $client2->request('GET', '/pedidos/W233Q42HC4IO');
+        $crawler = $client2->request('GET', '/pedido/W233Q42HC4IO');
         $this->assertEquals(200, $client2->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /pedido/x");
         $this->assertNotEmpty($client2->getResponse()->getContent());
     }
