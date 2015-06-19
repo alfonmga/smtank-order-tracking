@@ -77,6 +77,10 @@ class Pedidos
      */
     private $codigoSeguimiento;
 
+    public function __construct()
+    {
+        $this->fechaInicio = new \DateTime();
+    }
 
     /**
      * Get id
