@@ -59,6 +59,7 @@ class PedidosControllerTest extends WebTestCase
         $order->setNombreProducto('5000 Twitter Followers');
         $order->setPrecioProducto('39.95');
         $order->setCodigoSeguimiento('W233Q42HC4IO');
+        $order->setEstadoPedido('pendiente');
 
         $this->em->persist($order);
         $this->em->flush($order);
