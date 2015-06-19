@@ -2,10 +2,21 @@
 
 namespace OrderTracking\FrontendBundle\Tests\Controller;
 
+use OrderTracking\BackendBundle\Entity\Pedidos;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PedidosControllerTest extends WebTestCase
 {
+    private $em;
+    public function setUp()
+    {
+        self::bootKernel();
+        $this->em = static::$kernel->getContainer()
+            ->get('doctrine')
+            ->getManager()
+        ;
+    }
+
     public function testCompleteScenario()
     {
         // Create a new client to browse the application
@@ -42,18 +53,18 @@ class PedidosControllerTest extends WebTestCase
         );
         $randEmail = $clientEmails[array_rand($clientEmails)];
 
-        $crawler = $client->request('POST', 'api/crear/'.$randName.'/'.$randEmail.'/5000 Twitter Followers/39.95/yoursecretkeyhere');
-        $response = $client->getResponse();
-        $responseJson = json_decode($client->getResponse(), true);
+        $order = new Pedidos();
+        $order->setEmailCliente($randEmail);
+        $order->setNombreCliente($randName);
+        $order->setNombreProducto('5000 Twitter Followers');
+        $order->setPrecioProducto('39.95');
+        $order->setCodigoSeguimiento('W233Q42HC4IO');
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for POST api/crear/");
-        $this->assertTrue(
-            $client->getResponse()->headers->contains(
-                'Content-Type',
-                'application/json'
-            )
-        );
-        $this->assertEquals('{"estado":"success"}', $responseJson['estado']);
+        $this->em->persist($order);
+        $this->em->flush($order);
+
+        $crawler = $client->request('GET', '/pedidos/W233Q42HC4IO');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /pedido/x");
         $this->assertNotEmpty($client->getResponse()->getContent());
     }
 }
