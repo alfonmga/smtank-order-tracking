@@ -1,0 +1,5 @@
+# Codeclimate.com mola!
+languages:
+  PHP: true
+exclude_paths:
+  - app/*
