@@ -79,4 +79,17 @@ class DefaultController extends Controller
             return $response;
         }
     }
+
+    /**
+     * @Route("/backend/logs", name="backend_logs")
+     */
+    public function logsAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $logs = $em->getRepository('OrderTrackingBackendBundle:Log')->findBy(array(), array('id'=>'desc'));
+
+        return $this->render('@OrderTrackingBackend/Pedidos/logs.html.twig', array(
+            'logs' => $logs
+        ));
+    }
 }

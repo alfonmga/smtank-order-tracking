@@ -3,6 +3,7 @@
 namespace OrderTracking\FrontendBundle\Controller;
 
 
+use OrderTracking\BackendBundle\Entity\Log;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -41,6 +42,13 @@ class PedidosController extends Controller
 
             return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
         }
+
+        $log = new Log();
+        $log->setNombreCliente($entity->getNombreCliente());
+        $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
+        $log->setPedidoId($entity->getId());
+        $em->persist($log);
+        $em->flush($log);
 
         $entity2 = $em->getRepository('OrderTrackingFrontendBundle:Historial')->findBy(array('idPedido' => $id), array( 'fecha' => 'DESC' ));
 

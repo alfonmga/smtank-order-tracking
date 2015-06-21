@@ -18,7 +18,9 @@
     </nav>
 </header>
 <div class="container" style="padding: 60px 15px 0;">
+    <a href="{{ path('backend_logs') }}"><button type="button" class="btn btn-danger" style="float: left;"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Ver logs</button></a>
     <a href="{{ path('backend_new') }}"><button type="button" class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir nuevo pedido</button></a>
+    <br>
     <h1>Lista de pedidos</h1>
 
     <table class="table table-hover">
