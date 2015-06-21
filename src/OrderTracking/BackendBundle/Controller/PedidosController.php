@@ -52,6 +52,7 @@ class PedidosController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setFechaInicio(date_create(date('Y-m-d H:i:s')));
             $em->persist($entity);
             $em->flush();
 
@@ -94,6 +95,13 @@ class PedidosController extends Controller
     {
         $entity = new Pedidos();
         $form   = $this->createCreateForm($entity);
+        $form->remove('fechaInicio');
+        $form->remove('fechaCompletado');
+        $codigoSeguimiento = '';
+        for ($i = 0; $i < 12; $i++) {
+            $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
+        }
+        $form->get('codigoSeguimiento')->setData($codigoSeguimiento);
 
         return array(
             'entity' => $entity,

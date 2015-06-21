@@ -16,14 +16,18 @@ class PedidosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaInicio')
-            ->add('fechaCompletado')
+            ->add('fechaInicio', 'datetime')
+            ->add('fechaCompletado', 'datetime')
             ->add('nombreCliente')
             ->add('emailCliente')
             ->add('nombreProducto')
             ->add('precioProducto')
-            ->add('estadoPedido')
-            ->add('codigoSeguimiento')
+            ->add('estadoPedido', 'choice', array(
+                'choices' => array('pendiente' => 'Pendiente', 'en progreso' => 'En progreso', 'completado' => 'Completado')
+            ))
+            ->add('codigoSeguimiento', 'text', array(
+                'read_only' => true
+            ))
         ;
     }
     
