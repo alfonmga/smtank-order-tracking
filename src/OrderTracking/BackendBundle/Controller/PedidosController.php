@@ -53,6 +53,15 @@ class PedidosController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setFechaInicio(date_create(date('Y-m-d H:i:s')));
+
+            $estadoForm = $form["estadoPedido"]->getData();
+            $codigoSeguimiento = $form["codigoSeguimiento"]->getData();
+            $historial = new Historial();
+            $historial->setFecha(date_create(date('Y-m-d H:i:s')));
+            $historial->setEstado($estadoForm);
+            $historial->setIdPedido($codigoSeguimiento);
+
+            $em->persist($historial);
             $em->persist($entity);
             $em->flush();
 
