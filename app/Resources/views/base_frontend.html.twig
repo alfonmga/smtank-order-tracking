@@ -27,8 +27,9 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('order_tracking_frontend_homepage') }}">Página de inicio</a></li>
-                    <li><a href="http://smtank.com">Volver a la tienda</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('backend') }}"><span class="glyphicon glyphicon-cog"></span> Acceder a Backend</a></li>{% endif %}
+                    <li><a href="{{ url('order_tracking_frontend_homepage') }}"><span class="glyphicon glyphicon-home"></span> Página de inicio</a></li>
+                    <li><a href="http://smtank.com"><span class="glyphicon glyphicon-shopping-cart"></span> Volver a la tienda</a></li>
             </div>
     </nav>
 </header>
