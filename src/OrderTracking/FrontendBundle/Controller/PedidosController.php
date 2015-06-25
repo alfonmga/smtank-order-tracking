@@ -43,13 +43,15 @@ class PedidosController extends Controller
             return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
         }
 
-        $log = new Log();
-        $log->setNombreCliente($entity->getNombreCliente());
-        $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
-        $log->setPedidoId($entity->getId());
-        $em->persist($log);
-        $em->flush($log);
-
+        if(!$this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            $log = new Log();
+            $log->setNombreCliente($entity->getNombreCliente());
+            $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
+            $log->setPedidoId($entity->getId());
+            $em->persist($log);
+            $em->flush($log);
+        }
+        
         $entity2 = $em->getRepository('OrderTrackingFrontendBundle:Historial')->findBy(array('idPedido' => $id), array( 'fecha' => 'DESC' ));
 
         return array(
