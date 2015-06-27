@@ -46,7 +46,6 @@ class DefaultController extends Controller
             $pedido->setPrecioProducto($precio);
             $pedido->setEstadoPedido('pendiente');
             $pedido->setFechaInicio(date_create(date('Y-m-d H:i:s')));
-            $pedido->setFechaCompletado(date_create(date('Y-m-d H:i:s')));
             $pedido->setCodigoSeguimiento($codigoSeguimiento);
 
             $historial = new Historial();
