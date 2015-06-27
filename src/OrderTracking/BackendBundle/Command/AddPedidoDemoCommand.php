@@ -150,5 +150,7 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
             $progress->advance();
         }
         $progress->finish();
+        $output->write('', true);
+        $output->write('<info>Operación realizada con éxito.</info>', true);
     }
 }
