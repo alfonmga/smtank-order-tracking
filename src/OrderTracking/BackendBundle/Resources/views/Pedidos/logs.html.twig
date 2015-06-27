@@ -6,7 +6,9 @@
     <a href="{{ path('backend') }}"><button type="button" class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Volver a Inicio</button></a>
     <br>
     <h1>Logs</h1>
-
+    {% if logs|length == 0 %}
+        <div class="alert alert-info" role="alert" style="text-align: center">No hay <b>logs</b> para mostrar.</div>
+    {% else %}
     <table class="table table-hover">
         <tbody>
         {% for log in logs %}
@@ -16,4 +18,5 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
     {% endblock %}

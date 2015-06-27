@@ -8,6 +8,9 @@
     <br>
     <h1>Lista de pedidos</h1>
 
+    {% if entities|length == 0 %}
+        <div class="alert alert-info" role="alert" style="text-align: center">No hay <b>pedidos</b> para mostrar.</div>
+    {% else %}
     <table class="table table-hover">
         <thead>
             <tr>
@@ -57,4 +60,5 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
     {% endblock %}
