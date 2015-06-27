@@ -32,7 +32,7 @@
                 <td>{{ entity.nombreCliente }}</td>
                 <td>{{ entity.emailCliente }}</td>
                 <td>{{ entity.nombreProducto }}</td>
-                <td>{{ entity.precioProducto }}</td>
+                <td>{{ entity.precioProducto }}€</td>
                 <td>{% if entity.estadoPedido == 'pendiente' %}
                 <span class="label label-warning">Pendiente</span>
                 {% elseif entity.estadoPedido == 'en progreso' %}
