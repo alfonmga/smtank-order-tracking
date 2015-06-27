@@ -31,11 +31,11 @@
             <tr>
                 <td><a href="{{ path('backend_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.fechaInicio %}{{ entity.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.fechaCompletado %}{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaCompletado %}{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}{% else %}<span style="font-size: smaller; color: dimgray">No completado</span> <span class="glyphicon glyphicon-time" aria-hidden="true"></span>{% endif %}</td>
                 <td>{{ entity.nombreCliente }}</td>
                 <td>{{ entity.emailCliente }}</td>
                 <td>{{ entity.nombreProducto }}</td>
-                <td>{{ entity.precioProducto }}€</td>
+                <td><span style="color: darkgreen">{{ entity.precioProducto }}€</span></td>
                 <td>{% if entity.estadoPedido == 'pendiente' %}
                 <span class="label label-warning">Pendiente</span>
                 {% elseif entity.estadoPedido == 'en progreso' %}
