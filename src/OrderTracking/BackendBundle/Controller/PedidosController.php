@@ -184,6 +184,12 @@ class PedidosController extends Controller
             'method' => 'PUT',
         ));
 
+        $form->add('notificar_cliente', 'checkbox', array(
+            'label' => '¿Notificar cliente?',
+            'attr' => array('checked' => 'true'),
+            'mapped' => false,
+            'required' => false,
+        ));
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
@@ -222,16 +228,16 @@ class PedidosController extends Controller
                 $historial->setIdPedido($codigoSeguimiento);
                 $em->persist($historial);
 
-                $message = \Swift_Message::newInstance()
-                    ->setSubject('Pedido actualizado - SMTank.com')
-                    ->setFrom('contacto@smtank.com')
-                    ->setTo($emailCliente)
-                    ->setBody('Hola ' . $nombreCliente . ',<br><br> El estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) ha sido actualizado.<br>Entra en http://pedidos.smtank.com para ver más detalles sobre tu pedido. <br><br>Un saludo,<br>SMTank.com.', "text/html");
-                $this->get('mailer')->send($message);
-
+                if ($editForm['notificar_cliente']->getData() == true) {
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('Pedido actualizado - SMTank.com')
+                        ->setFrom('contacto@smtank.com')
+                        ->setTo($emailCliente)
+                        ->setBody('Hola ' . $nombreCliente . ',<br><br> El estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) ha sido actualizado.<br>Entra en http://pedidos.smtank.com para ver más detalles sobre tu pedido. <br><br>Un saludo,<br>SMTank.com.', "text/html");
+                    $this->get('mailer')->send($message);
+                }
             }
-            if ($estadoForm == 'completado')
-            {
+            if ($estadoForm == 'completado') {
                 $actualizar = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
                 $actualizar->setFechaCompletado(date_create(date('Y-m-d H:i:s')));
                 $em->persist($actualizar);
