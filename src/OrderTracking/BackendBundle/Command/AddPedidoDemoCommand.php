@@ -9,6 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use OrderTracking\BackendBundle\Entity\Pedidos;
 use OrderTracking\FrontendBundle\Entity\Historial;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class AddPedidoDemoCommand extends ContainerAwareCommand
 {
@@ -53,8 +54,9 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
             $cantidad = $helper->ask($input, $output, $question);
         }
 
+        $progress = new ProgressBar($output, $cantidad);
+        $progress->start();
         for ($x = 0; $x < $cantidad; $x++) {
-            $output->writeln('Ronda '.$x);
             $em = $this->getContainer()->get('doctrine')->getManager();
             $Pedido = new Pedidos();
             $Pedido->setNombreCliente($this->getContainer()->get('DemoDataGenerator')->nombreCliente());
@@ -145,6 +147,8 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
 
             $em->persist($Pedido);
             $em->flush();
+            $progress->advance();
         }
+        $progress->finish();
     }
 }
