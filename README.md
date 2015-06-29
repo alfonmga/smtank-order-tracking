@@ -27,7 +27,7 @@ Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C
 ```
 $ git clone https://github.com/alfonsomga/smtank-order-tracking
 ```
-### Step 2: Create parameters.yml and parameters.yml.dist files in app/config folder <sub>(Do not forget to add you database..etc info)</sub>
+### Step 2: Create parameters.yml.dist file in app/config folder <sub>(Do not forget to add you database..etc info)</sub>
 ```
 parameters:
     database_driver: pdo_mysql
