@@ -40,7 +40,7 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: ~
     mailer_password: ~
-    locale: en
+    locale: es
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
 ```
