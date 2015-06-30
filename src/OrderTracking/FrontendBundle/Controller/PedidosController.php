@@ -28,8 +28,8 @@ class PedidosController extends Controller
     /**
      * Finds and displays a Pedidos entity.
      *
+     * @Route("/", name="pedido_search_form")
      * @Route("/{id}", name="pedido_show")
-     * @Method("GET")
      * @Template()
      */
     public function showAction($id)

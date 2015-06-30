@@ -69,11 +69,11 @@
     <p align="center"><img src="{{ asset('bundles/ordertrackingfrontend/images/logo_smtank.png', version='1.0', absolute=true) }}" alt="Logo, SMTank.com." width="250" height="128"></p>
     <h1 style="text-align: center;">Seguimiento de pedidos</h1>
     <div style="text-align: center">
-        <form action="" id="form-buscar">
-            <input type="text" id="codigoSeguimiento" placeholder="Introduce un número de pedido" style="width: 300px; text-align: center;">
+        <form action="{{ path('pedido_search_form') }}" id="form-buscar-pedido" method="post">
+            <input type="text" id="codigoSeguimiento" placeholder="Introduce un número de pedido" style="width: 300px; text-align: center;" value="" required="">
             <br>
             <br>
-            <input type="submit" class="btn btn-primary" id="localizarPedido" name="localizarPedido" value="Ver estado">
+            <input type="submit" class="btn btn-primary" value="Ver estado">
         </form>
     </div>
     </div>
@@ -88,17 +88,16 @@
     </div>
 {% endblock %}
 {% block javascripts %}{% endblock %}
-{% block afterjavascript %}<script type="text/javascript">
-    var base_url = '{{ url('order_tracking_frontend_homepage') }}';
-    $('#localizarPedido').click(function(){
-        var codigoseguimiento = document.getElementById("codigoSeguimiento").value;
-        if (codigoseguimiento) {
-            var target = base_url + 'pedido/' + document.getElementById("codigoSeguimiento").value;
-            $('#form-buscar').attr('action', target);
+{% block afterjavascript %}
+
+    <script type="application/javascript">
+        jQuery("#form-buscar-pedido").submit(function(e) {
+            $form = $(this);
+            $codigoSeguimiento = $("#codigoSeguimiento").val();
+            $formAction = $form.attr('action');
+            $form[0].setAttribute('action', $formAction + $("#codigoSeguimiento").val());
             return true;
-        }
-        else
-        alert('Error: No has introducido ningún código de seguimiento.');
-        return false;
-    });
-</script>{% endblock %}
+        });
+    </script>
+
+{% endblock %}
