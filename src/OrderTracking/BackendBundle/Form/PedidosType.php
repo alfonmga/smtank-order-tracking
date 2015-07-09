@@ -23,7 +23,7 @@ class PedidosType extends AbstractType
             ->add('nombreProducto')
             ->add('precioProducto')
             ->add('estadoPedido', 'choice', array(
-                'choices' => array('pendiente' => 'Pendiente', 'en progreso' => 'En progreso', 'completado' => 'Completado')
+                'choices' => array('pendiente' => 'Pendiente', 'en progreso' => 'En progreso', 'completado' => 'Completado', 'cancelado' => 'Cancelado')
             ))
             ->add('codigoSeguimiento', 'text', array(
                 'read_only' => true
