@@ -19,7 +19,7 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('pedido:add:demo')
+            ->setName('pedidos:add:demo')
             ->setDescription('Generador de pedidos demo')
             ->addArgument(
                 'cantidad',
