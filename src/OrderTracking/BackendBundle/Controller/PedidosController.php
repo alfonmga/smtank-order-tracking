@@ -190,8 +190,10 @@ class PedidosController extends Controller
             'mapped' => false,
             'required' => false,
         ));
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
+        $form->add('submit', 'submit', array('label' => 'Actualizar pedido'));
+        if ($entity->getEstadoPedido() !== 'completado') {
+            $form->remove('fechaCompletado');
+        }
         return $form;
     }
     /**
@@ -236,11 +238,12 @@ class PedidosController extends Controller
                         ->setBody('Hola ' . $nombreCliente . ',<br><br> El estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) ha sido actualizado.<br>Entra en http://pedidos.smtank.com para ver más detalles sobre tu pedido. <br><br>Un saludo,<br>SMTank.com.', "text/html");
                     $this->get('mailer')->send($message);
                 }
-            }
-            if ($estadoForm == 'completado') {
-                $actualizar = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
-                $actualizar->setFechaCompletado(date_create(date('Y-m-d H:i:s')));
-                $em->persist($actualizar);
+
+                if ($estadoForm == 'completado') {
+                    $actualizar = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
+                    $actualizar->setFechaCompletado(date_create(date('Y-m-d H:i:s')));
+                    $em->persist($actualizar);
+                }
             }
 
             $em->flush();
@@ -291,7 +294,7 @@ class PedidosController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('backend_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar pedido'))
             ->getForm()
         ;
     }
