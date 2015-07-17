@@ -19,16 +19,16 @@ class PedidosController extends Controller
 {
 
     /**
-     * @Route("/", name="pedido_index")
+     * @Route("/", name="pedido_search_form_route")
      */
-    public function inicioAction() {
-
+    public function inicioAction()
+    {
+        return $this->redirectToRoute('order_tracking_frontend_homepage');
     }
 
     /**
      * Finds and displays a Pedidos entity.
      *
-     * @Route("/", name="pedido_search_form")
      * @Route("/{id}", name="pedido_show")
      * @Template()
      */
