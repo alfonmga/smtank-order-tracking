@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new OrderTracking\BackendBundle\OrderTrackingBackendBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Dizda\CloudBackupBundle\DizdaCloudBackupBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

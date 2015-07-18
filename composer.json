@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "doctrine/migrations": "1.0.*@dev",
-        "doctrine/doctrine-migrations-bundle": "1.0.*"
+        "doctrine/doctrine-migrations-bundle": "1.0.*",
+        "dizda/cloud-backup-bundle": "~1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -77,8 +77,42 @@ fos_user:
     firewall_name: main
     user_class: OrderTracking\BackendBundle\Entity\User
 
+# Schema database migrations
 doctrine_migrations:
     dir_name: %kernel.root_dir%/DoctrineMigrations
     namespace: Application\Migrations
     table_name: migration_versions
     name: Application Migrations
+
+# File system used with dizda_cloud_backup
+knp_gaufrette:
+    adapters:
+        local_dir:
+            local:
+                directory: "%kernel.root_dir%/../app/BackupsDB"
+                create: true
+    filesystems:
+        bar:
+            adapter:    local_dir
+            alias:      local
+
+# Local Backups :-)
+dizda_cloud_backup:
+    output_file_prefix: ordertracking
+    timeout: 500
+    processor:
+        type: tar
+        options:
+            compression_ratio: 6
+            password: false
+            split:
+                enable: false # Default false
+                split_size: 1000 # Make each zip files no larger than "split_size" in bytes
+                storages: [ Gaufrette ] # Which cloud storages will upload split files
+    folders: [ app/BackupsDB ]
+    cloud_storages:
+        gaufrette:
+            service_name: local  # Gaufrette filesystem service name
+
+    databases:
+            mysql:
