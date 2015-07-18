@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new OrderTracking\FrontendBundle\OrderTrackingFrontendBundle(),
             new OrderTracking\BackendBundle\OrderTrackingBackendBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
