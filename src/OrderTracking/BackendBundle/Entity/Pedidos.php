@@ -3,6 +3,7 @@
 namespace OrderTracking\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Pedidos
@@ -18,6 +19,7 @@ class Pedidos
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="Log", mappedBy="pedido_id", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $id;
 
@@ -79,6 +81,7 @@ class Pedidos
 
     public function __construct()
     {
+        $this->id = new ArrayCollection();
         $this->fechaInicio = new \DateTime();
     }
 

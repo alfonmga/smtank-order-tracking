@@ -24,9 +24,10 @@ class Log
     /**
      * @var integer
      *
-     * @ORM\Column(name="pedido_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Pedidos", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="pedido_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
-    private $pedidoId;
+    private $pedido;
 
     /**
      * @var string
@@ -54,26 +55,26 @@ class Log
     }
 
     /**
-     * Set pedidoId
+     * Set pedido
      *
-     * @param integer $pedidoId
+     * @param integer $pedido
      * @return Log
      */
-    public function setPedidoId($pedidoId)
+    public function setPedido($pedido)
     {
-        $this->pedidoId = $pedidoId;
+        $this->pedido = $pedido;
 
         return $this;
     }
 
     /**
-     * Get pedidoId
+     * Get pedido
      *
      * @return integer 
      */
-    public function getPedidoId()
+    public function getPedido()
     {
-        return $this->pedidoId;
+        return $this->pedido;
     }
 
     /**
