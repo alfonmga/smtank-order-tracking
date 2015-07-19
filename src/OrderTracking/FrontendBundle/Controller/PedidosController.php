@@ -45,14 +45,13 @@ class PedidosController extends Controller
 
         if(!$this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
             $log = new Log();
-            $log->setNombreCliente($entity->getNombreCliente());
             $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
             $log->setPedido($entity);
             $em->persist($log);
             $em->flush($log);
         }
         
-        $entity2 = $em->getRepository('OrderTrackingFrontendBundle:Historial')->findBy(array('idPedido' => $id), array( 'fecha' => 'DESC' ));
+        $entity2 = $em->getRepository('OrderTrackingBackendBundle:Historial')->findBy(array('idPedido' => $id), array( 'fecha' => 'DESC' ));
 
         return array(
             'entity'      => $entity,

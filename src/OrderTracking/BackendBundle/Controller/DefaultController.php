@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use OrderTracking\BackendBundle\Entity\Pedidos;
-use OrderTracking\FrontendBundle\Entity\Historial;
+use OrderTracking\BackendBundle\Entity\Historial;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller

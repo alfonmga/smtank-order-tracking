@@ -13,7 +13,7 @@
             <tbody>
             {% for log in logs %}
                 <tr>
-                    <td><b>{{ log.nombreCliente }}</b> ha comprobado el pedido <b><a href="{{ path('backend_show', {id: log.pedido.id}) }}">#{{ log.pedido.id }}</a></b> a las <b>{{ log.fechaCheck|date('H:i:s - d-m-Y') }}</b></td>
+                    <td><b>{{ log.pedido.nombreCliente }}</b> ha comprobado el pedido <b><a href="{{ path('backend_show', {id: log.pedido.id}) }}">#{{ log.pedido.id }}</a></b> a las <b>{{ log.fechaCheck|date('H:i:s - d-m-Y') }}</b></td>
                 </tr>
             {% endfor %}
             </tbody>
