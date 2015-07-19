@@ -9,14 +9,14 @@
     {% if logs|length == 0 %}
         <div class="alert alert-info" role="alert" style="text-align: center">No hay <b>logs</b> para mostrar.</div>
     {% else %}
-    <table class="table table-hover">
-        <tbody>
-        {% for log in logs %}
-        <tr>
-        <td><b>{{ log.nombreCliente }}</b> ha comprobado el pedido <b><a href="{{ path('backend_show', {id: log.pedidoId}) }}">#{{ log.pedidoId }}</a></b> a las <b>{{ log.fechaCheck|date('H:i:s - d-m-Y') }}</b></td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-hover">
+            <tbody>
+            {% for log in logs %}
+                <tr>
+                    <td><b>{{ log.nombreCliente }}</b> ha comprobado el pedido <b><a href="{{ path('backend_show', {id: log.pedido.id}) }}">#{{ log.pedido.id }}</a></b> a las <b>{{ log.fechaCheck|date('H:i:s - d-m-Y') }}</b></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
-    {% endblock %}
+{% endblock %}
