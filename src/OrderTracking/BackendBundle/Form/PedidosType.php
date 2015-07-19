@@ -19,7 +19,10 @@ class PedidosType extends AbstractType
             ->add('fechaInicio', 'datetime')
             ->add('fechaCompletado', 'datetime')
             ->add('nombreCliente')
-            ->add('emailCliente')
+            ->add('emailCliente', 'email', array(
+                'attr' => array('required' => 'true',
+                                'pattern' => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
+            ))
             ->add('nombreProducto')
             ->add('precioProducto')
             ->add('estadoPedido', 'choice', array(
