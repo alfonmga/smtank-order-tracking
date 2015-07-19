@@ -47,7 +47,7 @@ class PedidosController extends Controller
             $log = new Log();
             $log->setNombreCliente($entity->getNombreCliente());
             $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
-            $log->setPedidoId($entity->getId());
+            $log->setPedido($entity);
             $em->persist($log);
             $em->flush($log);
         }
