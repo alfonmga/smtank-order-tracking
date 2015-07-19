@@ -1,6 +1,6 @@
 <?php
 
-namespace OrderTracking\FrontendBundle\Entity;
+namespace OrderTracking\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
