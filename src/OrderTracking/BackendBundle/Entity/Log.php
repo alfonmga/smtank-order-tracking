@@ -30,13 +30,6 @@ class Log
     private $pedido;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre_cliente", type="string", length=255)
-     */
-    private $nombreCliente;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_check", type="datetime")
@@ -75,29 +68,6 @@ class Log
     public function getPedido()
     {
         return $this->pedido;
-    }
-
-    /**
-     * Set nombreCliente
-     *
-     * @param string $nombreCliente
-     * @return Log
-     */
-    public function setNombreCliente($nombreCliente)
-    {
-        $this->nombreCliente = $nombreCliente;
-
-        return $this;
-    }
-
-    /**
-     * Get nombreCliente
-     *
-     * @return string 
-     */
-    public function getNombreCliente()
-    {
-        return $this->nombreCliente;
     }
 
     /**
