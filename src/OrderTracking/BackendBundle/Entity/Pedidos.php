@@ -4,12 +4,13 @@ namespace OrderTracking\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Pedidos
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity("codigo_seguimiento")
  */
 class Pedidos
 {
@@ -75,13 +76,15 @@ class Pedidos
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_seguimiento", type="string", length=255)
+     * @ORM\Column(name="codigo_seguimiento", type="string", length=255, unique=true)
+     * @ORM\OneToMany(targetEntity="Historial", mappedBy="id_pedido", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $codigoSeguimiento;
 
     public function __construct()
     {
         $this->id = new ArrayCollection();
+        $this->codigoSeguimiento = new ArrayCollection();
         $this->fechaInicio = new \DateTime();
     }
 
