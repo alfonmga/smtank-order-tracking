@@ -37,8 +37,8 @@ class Historial
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="id_pedido", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Pedidos", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="id_pedido", referencedColumnName="codigo_seguimiento", onDelete="CASCADE", nullable=false)
      */
     private $idPedido;
 
