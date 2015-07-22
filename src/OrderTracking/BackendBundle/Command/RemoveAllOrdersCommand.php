@@ -4,6 +4,8 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Symfony\Component\Console\Helper\ProgressBar;
+
 class RemoveAllOrdersCommand extends ContainerAwareCommand
 {
     /**
@@ -26,14 +28,22 @@ class RemoveAllOrdersCommand extends ContainerAwareCommand
             $output->write('<fg=red>Operación cancelada.</fg=red>', true);
             return;
         }
+
         $em = $this->getContainer()->get('doctrine')->getEntityManager();
         $Pedidos = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findAll();
         $numPedidos = count($Pedidos);
+
+        $progress = new ProgressBar($output, $numPedidos);
+        $progress->start();
+
         foreach ($Pedidos as $Pedido) {
             $em->remove($Pedido);
+            $progress->advance();
         }
         $em->flush();
+
+        $progress->finish();
         $output->write('', true);
-        $output->write('<info>Operación realizada con éxito: ' . $numPedidos . ' pedidos eliminados</info>', true);
+        $output->write('<info>Operación realizada con éxito.</info>', true);
     }
 }
