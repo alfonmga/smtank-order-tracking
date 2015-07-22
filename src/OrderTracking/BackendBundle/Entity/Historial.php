@@ -22,6 +22,14 @@ class Historial
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Pedidos", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     */
+    private $parentId;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha", type="datetime")
@@ -37,8 +45,8 @@ class Historial
 
     /**
      * @var string
-     * @ORM\ManyToOne(targetEntity="Pedidos", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="id_pedido", referencedColumnName="codigo_seguimiento", onDelete="CASCADE", nullable=false)
+     *
+     * @ORM\Column(name="id_pedido", type="string", length=255)
      */
     private $idPedido;
 
@@ -51,6 +59,29 @@ class Historial
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return Log
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return integer
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
     }
 
     /**
