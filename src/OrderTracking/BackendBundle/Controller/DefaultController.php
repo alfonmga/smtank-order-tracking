@@ -58,6 +58,8 @@ class DefaultController extends Controller
             $response = new Response(json_encode($arrayResponse));
             $response->headers->set('Content-Type', 'application/json');
 
+            $this->get('TransactionalEmails')->newPedido($pedido->getNombreCliente(), $pedido->getEmailCliente(), $codigoSeguimiento);
+
             return $response;
         }
         else {

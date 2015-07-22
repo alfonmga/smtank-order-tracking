@@ -9,3 +9,6 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
      DemoDataGenerator:
          class: OrderTracking\BackendBundle\Services\DemoDataGenerator
+     TransactionalEmails:
+         class: OrderTracking\BackendBundle\Services\TransactionalEmails
+         arguments: ["@mailer"]
