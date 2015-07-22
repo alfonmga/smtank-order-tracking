@@ -184,9 +184,11 @@ class PedidosController extends Controller
             'method' => 'PUT',
         ));
 
+        $environment = $this->get('kernel')->getEnvironment();
+
         $form->add('notificar_cliente', 'checkbox', array(
             'label' => '¿Notificar cliente?',
-            'attr' => array('checked' => 'true'),
+            'attr' => array('checked' => ($environment === 'dev' ? false : true)),
             'mapped' => false,
             'required' => false,
         ));
