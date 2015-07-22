@@ -21,22 +21,13 @@ class DefaultController extends Controller
      */
     public function apiAction($nombre, $email, $nombreproducto, $precio, $secretkey)
     {
-        if ($secretkey === 'yoursecretkeyhere') {
 
+        if ($secretkey === $this->container->getParameter('apikey')) {
             $em = $this->getDoctrine()->getManager();
 
             $codigoSeguimiento = '';
             for ($i = 0; $i < 12; $i++) {
                 $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
-            }
-
-            $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $codigoSeguimiento));
-
-            if ($entity) {
-                $codigoSeguimiento = '';
-                for ($i = 0; $i < 12; $i++) {
-                    $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
-                }
             }
 
             $pedido = new Pedidos();
@@ -47,32 +38,34 @@ class DefaultController extends Controller
             $pedido->setEstadoPedido('pendiente');
             $pedido->setFechaInicio(date_create(date('Y-m-d H:i:s')));
             $pedido->setCodigoSeguimiento($codigoSeguimiento);
+            $em->persist($pedido);
+            $em->flush();
 
             $historial = new Historial();
             $historial->setEstado('pendiente');
             $historial->setFecha(date_create(date('Y-m-d H:i:s')));
             $historial->setIdPedido($codigoSeguimiento);
+            $historial->setParentId($pedido);
 
-            $em->persist($pedido);
             $em->persist($historial);
             $em->flush();
 
-            $array = array (
-                "estado" => "success",
-                "codigoSeguimiento" => "$codigoSeguimiento"
+            $arrayResponse = array (
+                'estado' => 'success',
+                'codigoSeguimiento' => $pedido->getCodigoSeguimiento()
             );
 
-            $response = new Response(json_encode($array));
+            $response = new Response(json_encode($arrayResponse));
             $response->headers->set('Content-Type', 'application/json');
 
             return $response;
         }
         else {
-            $array = array (
-                "estado" => "denied"
+            $arrayResponse = array (
+                'estado' => 'access denied'
             );
 
-            $response = new Response(json_encode($array));
+            $response = new Response(json_encode($arrayResponse));
             $response->headers->set('Content-Type', 'application/json');
 
             return $response;
