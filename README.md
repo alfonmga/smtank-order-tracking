@@ -62,13 +62,15 @@ $ php app/console fos:user:promote Usuario --super
 Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
 ### Paso 7: Añade un pedido al sistema
 Existen dos formas para añadir pedidos al sistema:
-- Primera opción:
+- **Primera opción**:
 
-    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**". 
+    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**":
+    
+    ![Add order](https://i.imgur.com/Ef7Jvlg.png)
     
     Esta opción es manual.
 
-- Segunda opción:
+- **Segunda opción**:
     
     Añade pedidos desde una simple API.
 
