@@ -42,7 +42,7 @@ parameters:
     database_path: null
 ```
 ### Paso 3: Permisos
-Los directorios app/cache/ y app/logs/ necesitan permisos de escritura.
+Los directorios **app/cache/** y **app/logs/** necesitan permisos de escritura.
 Sigue estas instrucciones para dar los permisos de escritura según tu entorno de desarrollo: http://symfony.es/documentacion/como-solucionar-el-problema-de-los-permisos-de-symfony2/
 ### Paso 4: Ejecuta composer
 *En este paso necesitas tener instalado [composer](https://getcomposer.org/download/) e instalado globalmente.
@@ -72,5 +72,5 @@ Existen dos formas para añadir pedidos al sistema:
     
     Añade pedidos desde una simple API.
 
-
+----------------------
 Esto es todo, si tienes cualquier duda o problema házmelo saber 😉
