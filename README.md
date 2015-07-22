@@ -1,33 +1,30 @@
 [![Build Status](https://travis-ci.org/alfonsomga/smtank-order-tracking.svg?branch=master)](https://travis-ci.org/alfonsomga/smtank-order-tracking) [![Code Climate](https://codeclimate.com/github/alfonsomga/smtank-order-tracking/badges/gpa.svg)](https://codeclimate.com/github/alfonsomga/smtank-order-tracking)
 <p align="center"><img width="250" height="128" src="http://i.imgur.com/AtFS9Ie.png"/></p>
-# Order tracking system for SMTank.com
-### Information
-Project done with PHP Symfony2 version 2.6.9 framework.
+# Sistema de seguimiento de pedidos para SMTank.com
+### Información
+Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.10).
 
 
-Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C).
-### Screenshots (click to enlarge)
+Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
+# Capturas de imagen
 ---------------------------------
 
-### Front-end
-![Homepage](http://i.imgur.com/iyUsbiI.png)
-![404 Page](http://i.imgur.com/382o0Lu.png)
-![Order information](http://i.imgur.com/y7SXdEV.png)
-### Back-end
-![Back-end order management](http://i.imgur.com/sKXNWTT.png)
-![Back-end add new order](http://i.imgur.com/Rh9Stih.png)
-![Back-end edit order](http://i.imgur.com/Bt9hOUD.png)
+![Homepage](http://i.imgur.com/cokxVgl.png)
+![Back-end order management](http://i.imgur.com/4kFHL2a.png)
+![Back-end logs](http://i.imgur.com/DaPUXkz.png)
+![Order information](http://i.imgur.com/Jl6UF0N.png)
+![404 Page](http://i.imgur.com/BevHFhK.png)
 
 
 
 
-### Installation guide
+# Instrucciones para instalar la aplicación
 ----------------------
-### Step 1: Clone the repository
+### Paso 1: Clonar el repositorio
 ```
 $ git clone https://github.com/alfonsomga/smtank-order-tracking
 ```
-### Step 2: Create parameters.yml.dist file in app/config folder <sub>(Do not forget to add you database..etc info)</sub>
+### Paso 2: Crear el archivo parameters.yml.dist en el directorio app/config <sub>(No te olvides de incluir la información de tu base de datos, mailer..etc)</sub>
 ```
 parameters:
     database_driver: pdo_mysql
@@ -44,37 +41,38 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
 ```
-### Step 3: Permissions
-Folder app/cache/ and app/logs/ needs write permissions.
-
-Please follow this instructions: http://symfony.com/doc/current/book/installation.html#book-installation-permissions
-### Step 4: Run composer
-*This step requires have downloaded and installed [composer](https://getcomposer.org/download/) globally.
+### Paso 3: Permisos
+Los directorios **app/cache/** y **app/logs/** necesitan permisos de escritura.
+Sigue estas instrucciones para dar los permisos de escritura según tu entorno de desarrollo: http://symfony.es/documentacion/como-solucionar-el-problema-de-los-permisos-de-symfony2/
+### Paso 4: Ejecuta composer
+*En este paso necesitas tener instalado [composer](https://getcomposer.org/download/) e instalado globalmente.
 ```
 $ sudo composer install
 ```
-### Step 5: Build database schemas
+### Paso 5: Construir esquemas de la base de datos
 ```
 $ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
 ```
-### Step 6: Add a new order through HTTP POST <sub>(You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)</sub>
+### Paso 6: Crea un usuario Admin para el Back-End
 ```
-http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{product_price}/{secretkey}
+$ php app/console fos:user:create Usuario prueba@ejemplo.com p@ssword
+$ php app/console fos:user:promote Usuario --super
 ```
-Example successful response:
-```
-{
-"estado": "success",
-"codigoSeguimiento": "JOT6CN57664C"
-}
-```
-### Step 7: Create an admin user for back-end zone
-```
-$ php app/console fos:user:create testuser test@example.com p@ssword
-$ php app/console fos:user:promote testuser --super
-```
+Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
+### Paso 7: Añade un pedido al sistema
+Existen dos formas para añadir pedidos al sistema:
+- **Primera opción**:
 
-Access to back-end admin panel: http://mydomain.com/backend
+    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**":
+    
+    ![Add order](https://i.imgur.com/Ef7Jvlg.png)
+    
+    Esta opción es manual.
 
-That's all, if you have any problem let me know and I'll be happy to help you. 😉
+- **Segunda opción**:
+    
+    Añade pedidos desde una simple API.
+
+----------------------
+Esto es todo, si tienes cualquier duda o problema házmelo saber 😉

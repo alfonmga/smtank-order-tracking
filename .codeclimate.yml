@@ -3,3 +3,5 @@ languages:
   PHP: true
 exclude_paths:
   - app/*
+  - src/OrderTracking/BackendBundle/DependencyInjection/*
+  - src/OrderTracking/FrontendBundle/DependencyInjection/*
