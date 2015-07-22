@@ -1,22 +1,19 @@
 [![Build Status](https://travis-ci.org/alfonsomga/smtank-order-tracking.svg?branch=master)](https://travis-ci.org/alfonsomga/smtank-order-tracking) [![Code Climate](https://codeclimate.com/github/alfonsomga/smtank-order-tracking/badges/gpa.svg)](https://codeclimate.com/github/alfonsomga/smtank-order-tracking)
 <p align="center"><img width="250" height="128" src="http://i.imgur.com/AtFS9Ie.png"/></p>
-# Order tracking system for SMTank.com
-### Information
-Project done with PHP Symfony2 version 2.6.9 framework.
+# Sistema de seguimiento de pedidos para SMTank.com
+### Información
+Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.10).
 
 
-Live demo: http://pedidos.smtank.com (Use demo order tracking code: JOT6CN57664C).
-### Screenshots (click to enlarge)
+Ver en producción: http://pedidos.smtank.com (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
+### Capturas de imagen
 ---------------------------------
 
-### Front-end
-![Homepage](http://i.imgur.com/iyUsbiI.png)
-![404 Page](http://i.imgur.com/382o0Lu.png)
-![Order information](http://i.imgur.com/y7SXdEV.png)
-### Back-end
-![Back-end order management](http://i.imgur.com/sKXNWTT.png)
-![Back-end add new order](http://i.imgur.com/Rh9Stih.png)
-![Back-end edit order](http://i.imgur.com/Bt9hOUD.png)
+![Homepage](http://i.imgur.com/cokxVgl.png)
+![Back-end order management](http://i.imgur.com/4kFHL2a.png)
+![Back-end logs](http://i.imgur.com/DaPUXkz.png)
+![Order information](http://i.imgur.com/Jl6UF0N.png)
+![404 Page](http://i.imgur.com/BevHFhK.png)
 
 
 
