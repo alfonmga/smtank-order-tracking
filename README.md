@@ -5,8 +5,8 @@
 Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.10).
 
 
-Ver en producción: http://pedidos.smtank.com (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
-### Capturas de imagen
+Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
+# Capturas de imagen
 ---------------------------------
 
 ![Homepage](http://i.imgur.com/cokxVgl.png)
@@ -18,13 +18,13 @@ Ver en producción: http://pedidos.smtank.com (Utiliza el siguiente código de s
 
 
 
-### Installation guide
+# Instrucciones para instalar la aplicación
 ----------------------
-### Step 1: Clone the repository
+### Paso 1: Clonar el repositorio
 ```
 $ git clone https://github.com/alfonsomga/smtank-order-tracking
 ```
-### Step 2: Create parameters.yml.dist file in app/config folder <sub>(Do not forget to add you database..etc info)</sub>
+### Paso 2: Crear el archivo parameters.yml.dist en el directorio app/config <sub>(No te olvides de incluir la información de tu base de datos, mailer..etc)</sub>
 ```
 parameters:
     database_driver: pdo_mysql
@@ -41,37 +41,29 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
 ```
-### Step 3: Permissions
-Folder app/cache/ and app/logs/ needs write permissions.
-
-Please follow this instructions: http://symfony.com/doc/current/book/installation.html#book-installation-permissions
-### Step 4: Run composer
-*This step requires have downloaded and installed [composer](https://getcomposer.org/download/) globally.
+### Paso 3: Permisos
+Los directorios app/cache/ y app/logs/ necesitan permisos de escritura.
+Sigue estas instrucciones para dar los permisos de escritura según tu entorno de desarrollo: http://symfony.es/documentacion/como-solucionar-el-problema-de-los-permisos-de-symfony2/
+### Paso 4: Ejecuta composer
+*En este paso necesitas tener instalado [composer](https://getcomposer.org/download/) globalmente.
 ```
 $ sudo composer install
 ```
-### Step 5: Build database schemas
+### Paso 5: Construir esquemas de la base de datos
 ```
 $ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
 ```
-### Step 6: Add a new order through HTTP POST <sub>(You can find/edit your secret key in src/OrderTracking/BackendBundle/DefaultController.php)</sub>
+### Paso 6: Crea un usuario Admin para el Back-End
 ```
-http://mydomain.com/api/crear/{client_name}/{client_email}/{product_name}/{product_price}/{secretkey}
+$ php app/console fos:user:create Usuario prueba@ejemplo.com p@ssword
+$ php app/console fos:user:promote Usuario --super
 ```
-Example successful response:
-```
-{
-"estado": "success",
-"codigoSeguimiento": "JOT6CN57664C"
-}
-```
-### Step 7: Create an admin user for back-end zone
-```
-$ php app/console fos:user:create testuser test@example.com p@ssword
-$ php app/console fos:user:promote testuser --super
-```
+Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
+### Paso 7: Añade un pedido al sistema
+Existen dos formas para añadir pedidos al sistema:
+- Primera opción:
 
-Access to back-end admin panel: http://mydomain.com/backend
+- Segunda opción:
 
-That's all, if you have any problem let me know and I'll be happy to help you. 😉
+Esto es todo, si tienes cualquier duda o problema házmelo saber 😉
