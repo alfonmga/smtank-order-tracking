@@ -45,7 +45,7 @@ parameters:
 Los directorios app/cache/ y app/logs/ necesitan permisos de escritura.
 Sigue estas instrucciones para dar los permisos de escritura según tu entorno de desarrollo: http://symfony.es/documentacion/como-solucionar-el-problema-de-los-permisos-de-symfony2/
 ### Paso 4: Ejecuta composer
-*En este paso necesitas tener instalado [composer](https://getcomposer.org/download/) globalmente.
+*En este paso necesitas tener instalado [composer](https://getcomposer.org/download/) e instalado globalmente.
 ```
 $ sudo composer install
 ```
@@ -64,6 +64,13 @@ Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
 Existen dos formas para añadir pedidos al sistema:
 - Primera opción:
 
+    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**". 
+    
+    Esta opción es manual.
+
 - Segunda opción:
+    
+    Añade pedidos desde una simple API.
+
 
 Esto es todo, si tienes cualquier duda o problema házmelo saber 😉
