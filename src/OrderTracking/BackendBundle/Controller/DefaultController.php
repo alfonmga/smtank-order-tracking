@@ -85,7 +85,7 @@ class DefaultController extends Controller
     public function logsAction() {
 
         $em = $this->getDoctrine()->getManager();
-        $logs = $em->getRepository('OrderTrackingBackendBundle:Log')->findBy(array(), array('id'=>'desc'));
+        $logs = $em->getRepository('OrderTrackingBackendBundle:Log')->findBy(array(), array('fechaCheck'=>'desc'));
 
         return $this->render('@OrderTrackingBackend/Pedidos/logs.html.twig', array(
             'logs' => $logs
