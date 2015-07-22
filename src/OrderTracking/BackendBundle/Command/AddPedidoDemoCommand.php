@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use OrderTracking\BackendBundle\Entity\Pedidos;
-use OrderTracking\FrontendBundle\Entity\Historial;
+use OrderTracking\BackendBundle\Entity\Historial;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class AddPedidoDemoCommand extends ContainerAwareCommand
@@ -58,94 +58,102 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
         $progress->start();
         for ($x = 0; $x < $cantidad; $x++) {
             $em = $this->getContainer()->get('doctrine')->getManager();
+
             $Pedido = new Pedidos();
             $Pedido->setNombreCliente($this->getContainer()->get('DemoDataGenerator')->nombreCliente());
             $Pedido->setEmailCliente($this->getContainer()->get('DemoDataGenerator')->emailCliente());
-            $estadoPedido = $this->getContainer()->get('demodatagenerator')->estadoPedido();
-            $Pedido->setEstadoPedido($estadoPedido);
-            $codigoSeguimientoPedido = $this->getContainer()->get('DemoDataGenerator')->codigoSeguimiento();
-            $Pedido->setCodigoSeguimiento($codigoSeguimientoPedido);
+            $Pedido->setEstadoPedido($this->getContainer()->get('DemoDataGenerator')->estadoPedido());
+            $Pedido->setCodigoSeguimiento($this->getContainer()->get('DemoDataGenerator')->codigoSeguimiento());
             $Pedido->setNombreProducto($this->getContainer()->get('DemoDataGenerator')->nombreProducto());
             $Pedido->setPrecioProducto($this->getContainer()->get('DemoDataGenerator')->precioProducto());
 
-            $fechaInicioPedido = $this->getContainer()->get('DemoDataGenerator')->fechaInicio();
             $fechaObject = new \DateTime();
-            $fechaObject->setTimestamp($fechaInicioPedido);
+            $fechaObject->setTimestamp($this->getContainer()->get('DemoDataGenerator')->fechaInicio());
 
             $Pedido->setFechaInicio($fechaObject);
 
-            if($estadoPedido === 'pendiente')
+            $em->persist($Pedido);
+            $em->flush();
+
+            if($Pedido->getEstadoPedido() === 'pendiente')
             {
                 $Historial = new Historial();
                 $Historial->setEstado('pendiente');
                 $Historial->setFecha($fechaObject);
-                $Historial->setIdPedido($codigoSeguimientoPedido);
+                $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial->setParentId($Pedido);
 
                 $em->persist($Historial);
 
-            } elseif ($estadoPedido === 'en progreso') {
+            } elseif ($Pedido->getEstadoPedido() === 'en progreso') {
 
                 $Historial = new Historial();
                 $Historial->setEstado('pendiente');
                 $Historial->setFecha($fechaObject);
-                $Historial->setIdPedido($codigoSeguimientoPedido);
+                $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial->setParentId($Pedido);
 
                 $Historial2 = new Historial();
                 $Historial2->setEstado('en progreso');
-
                 $Historial2->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandSuperior($fechaObject->getTimestamp()));
-                $Historial2->setIdPedido($codigoSeguimientoPedido);
+                $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial2->setParentId($Pedido);
 
                 $em->persist($Historial);
                 $em->persist($Historial2);
 
-            } elseif ($estadoPedido === 'completado') {
+            } elseif ($Pedido->getEstadoPedido() === 'completado') {
 
                 $Historial = new Historial();
                 $Historial->setEstado('pendiente');
                 $Historial->setFecha($fechaObject);
-                $Historial->setIdPedido($codigoSeguimientoPedido);
+                $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial->setParentId($Pedido);
 
                 $Historial2 = new Historial();
                 $Historial2->setEstado('en progreso');
-
                 $Historial2->setFecha($tempdate1 = $this->getContainer()->get('demodatagenerator')->fechaRandSuperior($fechaObject->getTimestamp()));
-                $Historial2->setIdPedido($codigoSeguimientoPedido);
+                $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial2->setParentId($Pedido);
 
                 $Historial3 = new Historial();
                 $Historial3->setEstado('completado');
                 $Historial3->setFecha($tempdate2 = $this->getContainer()->get('demodatagenerator')->fechaRandSuperior($tempdate1->getTimestamp()));
-                $Historial3->setIdPedido($codigoSeguimientoPedido);
+                $Historial3->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial3->setParentId($Pedido);
 
                 $Pedido->setFechaCompletado($tempdate2);
 
+                $em->persist($Pedido);
                 $em->persist($Historial);
                 $em->persist($Historial2);
                 $em->persist($Historial3);
 
-            } elseif ($estadoPedido === 'cancelado') {
+            } elseif ($Pedido->getEstadoPedido() === 'cancelado') {
 
                 $Historial = new Historial();
                 $Historial->setEstado('pendiente');
                 $Historial->setFecha($fechaObject);
-                $Historial->setIdPedido($codigoSeguimientoPedido);
+                $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial->setParentId($Pedido);
 
                 $Historial2 = new Historial();
                 $Historial2->setEstado('en progreso');
                 $Historial2->setFecha($tempdate1 = $this->getContainer()->get('demodatagenerator')->fechaRandSuperior($fechaObject->getTimestamp()));
-                $Historial2->setIdPedido($codigoSeguimientoPedido);
+                $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial2->setParentId($Pedido);
 
                 $Historial3 = new Historial();
                 $Historial3->setEstado('cancelado');
                 $Historial3->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandSuperior($tempdate1->getTimestamp()));
-                $Historial3->setIdPedido($codigoSeguimientoPedido);
+                $Historial3->setIdPedido($Pedido->getCodigoSeguimiento());
+                $Historial3->setParentId($Pedido);
 
                 $em->persist($Historial);
                 $em->persist($Historial2);
                 $em->persist($Historial3);
             }
 
-            $em->persist($Pedido);
             $em->flush();
             $progress->advance();
         }
