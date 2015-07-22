@@ -77,14 +77,12 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="codigo_seguimiento", type="string", length=255, unique=true)
-     * @ORM\OneToMany(targetEntity="Historial", mappedBy="id_pedido", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $codigoSeguimiento;
 
     public function __construct()
     {
         $this->id = new ArrayCollection();
-        $this->codigoSeguimiento = new ArrayCollection();
         $this->fechaInicio = new \DateTime();
     }
 
