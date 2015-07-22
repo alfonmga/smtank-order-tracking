@@ -66,6 +66,9 @@ class PedidosController extends Controller
 
             $em->persist($historial);
             $em->flush();
+
+            $this->get('TransactionalEmails')->newPedido($entity->getNombreCliente(), $entity->getEmailCliente(), $codigoSeguimiento);
+
             return $this->redirect($this->generateUrl('backend_show', array('id' => $entity->getId())));
         }
 
@@ -235,12 +238,7 @@ class PedidosController extends Controller
                 $em->persist($historial);
 
                 if ($editForm['notificar_cliente']->getData() == true) {
-                    $message = \Swift_Message::newInstance()
-                        ->setSubject('Pedido actualizado - SMTank.com')
-                        ->setFrom('contacto@smtank.com')
-                        ->setTo($emailCliente)
-                        ->setBody('Hola ' . $nombreCliente . ',<br><br> El estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) ha sido actualizado.<br>Entra en http://pedidos.smtank.com para ver más detalles sobre tu pedido. <br><br>Un saludo,<br>SMTank.com.', "text/html");
-                    $this->get('mailer')->send($message);
+                    $this->get('TransactionalEmails')->pedidoUpdated($estadoForm, $nombreCliente, $emailCliente, $codigoSeguimiento);
                 }
 
                 if ($estadoForm == 'completado') {
