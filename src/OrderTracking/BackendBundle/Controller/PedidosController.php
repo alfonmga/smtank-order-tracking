@@ -53,6 +53,8 @@ class PedidosController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setFechaInicio(date_create(date('Y-m-d H:i:s')));
+            $em->persist($entity);
+            $em->flush();
 
             $estadoForm = $form["estadoPedido"]->getData();
             $codigoSeguimiento = $form["codigoSeguimiento"]->getData();
@@ -60,11 +62,10 @@ class PedidosController extends Controller
             $historial->setFecha(date_create(date('Y-m-d H:i:s')));
             $historial->setEstado($estadoForm);
             $historial->setIdPedido($codigoSeguimiento);
+            $historial->setParentId($entity);
 
             $em->persist($historial);
-            $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('backend_show', array('id' => $entity->getId())));
         }
 
@@ -230,6 +231,7 @@ class PedidosController extends Controller
                 $historial->setFecha(date_create(date('Y-m-d H:i:s')));
                 $historial->setEstado($estadoForm);
                 $historial->setIdPedido($codigoSeguimiento);
+                $historial->setParentId($entity);
                 $em->persist($historial);
 
                 if ($editForm['notificar_cliente']->getData() == true) {
