@@ -298,7 +298,10 @@ class PedidosController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('backend_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Borrar pedido'))
+            ->add('submit', 'submit', array(
+                'label' => 'Borrar pedido',
+                'attr' => array('onClick' => "return confirm('¿Está seguro que desea eliminar este pedido?');")
+            ))
             ->getForm()
         ;
     }
