@@ -12,3 +12,4 @@ parameters:
     locale: es
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
+    apikey: miApiKeySecretaAqui

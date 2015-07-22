@@ -40,6 +40,7 @@ parameters:
     locale: es
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
+    apikey: miApiKeySecretaAqui
 ```
 ### Paso 3: Permisos
 Los directorios **app/cache/** y **app/logs/** necesitan permisos de escritura.
@@ -62,15 +63,50 @@ $ php app/console fos:user:promote Usuario --super
 Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
 ### Paso 7: Añade un pedido al sistema
 Existen dos formas para añadir pedidos al sistema:
-- Primera opción:
 
-    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**". 
+1. **Primera opción**:
+
+    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**":
+    
+    ![Add order](https://i.imgur.com/Ef7Jvlg.png)
     
     Esta opción es manual.
 
-- Segunda opción:
+2. **Segunda opción**:
     
     Añade pedidos desde una simple API.
+    
+    URL Para realizar el POST:
+    ```
+    http://127.0.0.1:8000/api/crear/{nombre}/{email}/{nombreproducto}/{precio}/{secretkey}
+    ```
+    - {nombre}: Nombre del cliente
+    - {email}: E-mail del cliente
+    - {nombreproducto}: Nombre del producto que ha comprado
+    - {precio}: Precio del producto
+    - {secretkey}: contraseña/key de acceso a la api (se encuentra en parameters.yml)
+    
+    Ejemplo:
+    ```
+    http://smtank.dev/smtank-order-tracking/web/api/crear/Alfonso M./hello@alfonsomga.com/1000 Seguidores de Twitter/9,99/miApiKeySecretaAqui
+    ```
+    ![API Response](https://i.imgur.com/cgJxve7.png)
+    
+    En caso de que el pedido haya sido añadido correctamente la respuesta en formato JSON debería ser siempre la siguiente:
+    ```json
+    {
+      "estado": "success",
+      "codigoSeguimiento": "JOT6CN57664C"
+    }
+    ```
+    
+    Si el api key con el cual has hecho POST es incorrecto la respuesta es la siguiente:
+    
+    ```json
+    {
+      "estado": "access denied"
+    }
+    ```
 
 ----------------------
 Esto es todo, si tienes cualquier duda o problema házmelo saber 😉
