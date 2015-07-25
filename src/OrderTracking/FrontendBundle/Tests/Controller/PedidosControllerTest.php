@@ -41,23 +41,21 @@ class PedidosControllerTest extends WebTestCase
         // Add an order and verify it
         $client2 = static::createClient();
         $client2->followRedirects(true);
+
         $clientNames = array(
             "Alfonso M.",
             "John Doe",
             "Vladímir Putin"
         );
-        $randName = $clientNames[array_rand($clientNames)];
-
         $clientEmails = array(
             "hello@alfonsomga.com",
             "john@doe.com",
             "putin@russia.com"
         );
-        $randEmail = $clientEmails[array_rand($clientEmails)];
 
         $order = new Pedidos();
-        $order->setEmailCliente($randEmail);
-        $order->setNombreCliente($randName);
+        $order->setEmailCliente($clientEmails[array_rand($clientEmails)]);
+        $order->setNombreCliente($clientNames[array_rand($clientNames)]);
         $order->setNombreProducto('5000 Twitter Followers');
         $order->setPrecioProducto('39.95');
         $order->setCodigoSeguimiento('W233Q42HC4IO');
@@ -66,8 +64,12 @@ class PedidosControllerTest extends WebTestCase
         $this->em->persist($order);
         $this->em->flush($order);
 
-        $crawler = $client2->request('GET', '/pedido/W233Q42HC4IO');
+        $client2->request('GET', '/pedido/W233Q42HC4IO');
         $this->assertEquals(200, $client2->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /pedido/x");
         $this->assertNotEmpty($client2->getResponse()->getContent());
+
+        $this->em->remove($order);
+        $this->em->flush();
+
     }
 }
