@@ -108,5 +108,14 @@ Existen dos formas para añadir pedidos al sistema:
     }
     ```
 
+# Comandos
+### Añadir pedidos demo
+```command
+app/console pedidos:add:demo
+```
+### Eliminar todos los pedidos de la BBDD
+```command
+app/console pedidos:remove:all
+```
 ----------------------
 Esto es todo, si tienes cualquier duda o problema házmelo saber 😉
