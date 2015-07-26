@@ -123,3 +123,7 @@ fos_rest:
     format_listener: true
     view:
         view_response_listener: 'force'
+
+uecode_api_key:
+    delivery: header
+    parameter_name: api_key

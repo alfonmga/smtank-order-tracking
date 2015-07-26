@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new OrderTracking\RestBundle\OrderTrackingRestBundle(),
+            new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

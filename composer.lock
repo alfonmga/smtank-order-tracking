@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "faa2f193647e725f6b57619adfa63313",
+    "hash": "b6793087a3359390263b7950b26d3627",
     "packages": [
         {
             "name": "dizda/cloud-backup-bundle",
@@ -2479,6 +2479,44 @@
             "time": "2015-06-06 23:31:24"
         },
         {
+            "name": "uecode/api-key-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uecode/api-key-bundle.git",
+                "reference": "e0b8c8a6d69649fff9b61f1d73ce1f810198d84a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uecode/api-key-bundle/zipball/e0b8c8a6d69649fff9b61f1d73ce1f810198d84a",
+                "reference": "e0b8c8a6d69649fff9b61f1d73ce1f810198d84a",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofsymfony/user-bundle": "~2.0@dev",
+                "php": ">=5.3.0",
+                "symfony/symfony": ">=2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Uecode\\Bundle\\ApiKeyBundle": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com"
+                }
+            ],
+            "description": "Creates an avenue for using ApiKey authentication for Symfony2. Requires FOSUserBundle.",
+            "time": "2015-06-13 20:05:22"
+        },
+        {
             "name": "willdurand/jsonp-callback-validator",
             "version": "v1.1.0",
             "source": {
@@ -3469,7 +3507,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "doctrine/migrations": 20
+        "doctrine/migrations": 20,
+        "uecode/api-key-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
