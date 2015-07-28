@@ -72,6 +72,41 @@ class DefaultController extends FOSRestController
     }
 
     /**
+     * Actualizar estado de un pedido
+     *
+     * @Put("/pedido/{codigoSeguimiento}", name="_api_v1")
+     */
+    public function updatePedidoAction(Pedidos $pedido, Request $request)
+    {
+
+        $form = $this->createForm(new PedidosType(), $pedido);
+        // El usuario no debe introducir los siguientes valores
+        $form->remove('fechaInicio');
+        $form->remove('fechaCompletado');
+        $form->remove('nombreCliente');
+        $form->remove('emailCliente');
+        $form->remove('nombreProducto');
+        $form->remove('precioProducto');
+        $form->remove('codigoSeguimiento');
+        $form->submit($request);
+
+        if($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->get('TransactionalEmails')->pedidoUpdated($pedido->getEstadoPedido(), $pedido->getNombreCliente(),
+                $pedido->getEmailCliente(), $pedido->getCodigoSeguimiento());
+
+            return $pedido;
+        }
+
+        return array(
+            'form' => $form,
+        );
+
+    }
+
+    /**
      * Eliminar pedido
      *
      * @Delete("/pedido/borrar/{codigoSeguimiento}", name="_api_v1")
