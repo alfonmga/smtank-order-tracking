@@ -77,6 +77,7 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="estado_pedido", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $estadoPedido;
 
@@ -91,7 +92,7 @@ class Pedidos
     public function __construct()
     {
         $this->id = new ArrayCollection();
-        $this->fechaInicio = new \DateTime();
+        $this->fechaInicio = new \DateTime('now');
         $this->estadoPedido = 'pendiente';
         for ($i = 0; $i < 12; $i++) {
             $this->codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
