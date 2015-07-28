@@ -2,18 +2,25 @@
 
 namespace OrderTracking\BackendBundle\EventListener;
 
-use Doctrine\Common\EventSubscriber;
-
-use Doctrine\ORM\Event\OnFlushEventArgs,
-    Doctrine\ORM\Events;
-
-use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\Common\EventSubscriber,
+    Doctrine\ORM\Event\OnFlushEventArgs,
+    Doctrine\ORM\Events,
+    Doctrine\ORM\Event\LifecycleEventArgs;
 
 use OrderTracking\BackendBundle\Entity\Pedidos,
     OrderTracking\BackendBundle\Entity\Historial;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 class PedidosSubscriber implements EventSubscriber
 {
+    private $container;
+
+    public function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
     public function postPersist(LifecycleEventArgs $evento)
     {
         $PedidoEntity = $evento->getEntity();
@@ -28,6 +35,9 @@ class PedidosSubscriber implements EventSubscriber
             $Historial->setFecha(new \DateTime('now'));
             $em->persist($Historial);
             $em->flush();
+
+            $this->container->get('TransactionalEmails')->newPedido($PedidoEntity->getNombreCliente(),
+                $PedidoEntity->getEmailCliente(), $PedidoEntity->getCodigoSeguimiento());
         }
     }
 
@@ -45,6 +55,7 @@ class PedidosSubscriber implements EventSubscriber
                  * 3. Si existe historial comparamos el estado del pedido con el estado del último historial,
                  *    en caso de que sean iguales no hacemos nada, si es diferente creamos un nuevo historial con el
                  *    nuevo estado.
+                 * 4. Notificar cliente si el checkbox es TRUE o NULL (API REST)
                  **/
                 $ultimoHistorial = $em->getRepository('OrderTrackingBackendBundle:Historial')->findOneBy(array('parentId' =>
                     $PedidoEntity), array('id' => 'DESC'));
@@ -64,6 +75,15 @@ class PedidosSubscriber implements EventSubscriber
                             $PedidoEntity->setEstadoPedido('completado');
                             $md = $em->getClassMetadata('OrderTracking\BackendBundle\Entity\Pedidos');
                             $uow->recomputeSingleEntityChangeSet($md, $PedidoEntity);
+                        }
+                       $notificarCliente = $this->container->get('request')->getSession()->get($PedidoEntity->getId().
+                           $PedidoEntity->getCodigoSeguimiento());
+
+                        if($notificarCliente == true) {
+                            $this->container->get('TransactionalEmails')->pedidoUpdated(
+                                $PedidoEntity->getEstadoPedido(), $PedidoEntity->getNombreCliente(),
+                                $PedidoEntity->getEmailCliente(), $PedidoEntity->getCodigoSeguimiento()
+                            );
                         }
                     }
                 }
