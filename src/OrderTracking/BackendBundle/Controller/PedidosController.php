@@ -203,6 +203,8 @@ class PedidosController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $request->getSession()->set($entity->getId().$entity->getCodigoSeguimiento(),
+                $editForm['notificar_cliente']->getData());
             $em->flush();
             return $this->redirect($this->generateUrl('backend_edit', array('id' => $id)));
         }
