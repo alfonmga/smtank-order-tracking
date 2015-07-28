@@ -28,6 +28,10 @@ class RemoveAllOrdersCommand extends ContainerAwareCommand
             $output->write('<fg=red>Operación cancelada.</fg=red>', true);
             return;
         }
+        if($this->getContainer()->get('kernel')->getEnvironment() == 'prod') {
+        $output->write('<fg=red>Operación cancelada. Prohibido en producción.</fg=red>', true);
+        return;
+        }
 
         $em = $this->getContainer()->get('doctrine')->getEntityManager();
         $Pedidos = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findAll();

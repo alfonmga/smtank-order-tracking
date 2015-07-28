@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use OrderTracking\BackendBundle\Entity\Pedidos;
-use OrderTracking\BackendBundle\Entity\Historial;
 use OrderTracking\BackendBundle\Form\PedidosType;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -30,7 +29,6 @@ class PedidosController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findAll();
 
         return array(
@@ -56,19 +54,6 @@ class PedidosController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $estadoForm = $form["estadoPedido"]->getData();
-            $codigoSeguimiento = $form["codigoSeguimiento"]->getData();
-            $historial = new Historial();
-            $historial->setFecha(date_create(date('Y-m-d H:i:s')));
-            $historial->setEstado($estadoForm);
-            $historial->setIdPedido($codigoSeguimiento);
-            $historial->setParentId($entity);
-
-            $em->persist($historial);
-            $em->flush();
-
-            $this->get('TransactionalEmails')->newPedido($entity->getNombreCliente(), $entity->getEmailCliente(), $codigoSeguimiento);
-
             return $this->redirect($this->generateUrl('backend_show', array('id' => $entity->getId())));
         }
 
@@ -91,7 +76,9 @@ class PedidosController extends Controller
             'action' => $this->generateUrl('backend_create'),
             'method' => 'POST',
         ));
-
+        $form->add('estadoPedido', 'choice', array(
+            'choices' => array('pendiente' => 'Pendiente')
+        ));
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
@@ -110,11 +97,6 @@ class PedidosController extends Controller
         $form   = $this->createCreateForm($entity);
         $form->remove('fechaInicio');
         $form->remove('fechaCompletado');
-        $codigoSeguimiento = '';
-        for ($i = 0; $i < 12; $i++) {
-            $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
-        }
-        $form->get('codigoSeguimiento')->setData($codigoSeguimiento);
 
         return array(
             'entity' => $entity,
@@ -188,11 +170,9 @@ class PedidosController extends Controller
             'method' => 'PUT',
         ));
 
-        $environment = $this->get('kernel')->getEnvironment();
-
         $form->add('notificar_cliente', 'checkbox', array(
             'label' => '¿Notificar cliente?',
-            'attr' => array('checked' => ($environment === 'dev' ? false : true)),
+            'attr' => array('checked' => ($this->get('kernel')->getEnvironment() === 'dev' ? false : true)),
             'mapped' => false,
             'required' => false,
         ));
@@ -218,36 +198,11 @@ class PedidosController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pedidos entity.');
         }
-        $currentEstado = $entity->getEstadoPedido();
-        $emailCliente = $entity->getEmailCliente();
-        $nombreCliente = $entity->getNombreCliente();
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $estadoForm = $editForm["estadoPedido"]->getData();
-            $codigoSeguimiento = $editForm["codigoSeguimiento"]->getData();
-
-            if ($currentEstado !== $estadoForm) {
-                $historial = new Historial();
-                $historial->setFecha(date_create(date('Y-m-d H:i:s')));
-                $historial->setEstado($estadoForm);
-                $historial->setIdPedido($codigoSeguimiento);
-                $historial->setParentId($entity);
-                $em->persist($historial);
-
-                if ($editForm['notificar_cliente']->getData() == true) {
-                    $this->get('TransactionalEmails')->pedidoUpdated($estadoForm, $nombreCliente, $emailCliente, $codigoSeguimiento);
-                }
-
-                if ($estadoForm == 'completado') {
-                    $actualizar = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
-                    $actualizar->setFechaCompletado(date_create(date('Y-m-d H:i:s')));
-                    $em->persist($actualizar);
-                }
-            }
-
             $em->flush();
             return $this->redirect($this->generateUrl('backend_edit', array('id' => $id)));
         }

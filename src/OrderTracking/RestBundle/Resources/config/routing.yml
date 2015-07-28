@@ -1,4 +1,5 @@
 api_rest:
     type:     rest
     prefix:   /api/v1
+    defaults: {_format: json}
     resource: OrderTracking\RestBundle\Controller\DefaultController
