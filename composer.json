@@ -25,7 +25,8 @@
         "dizda/cloud-backup-bundle": "~1.6",
         "friendsofsymfony/rest-bundle": "^1.7",
         "jms/serializer-bundle": "^1.0",
-        "uecode/api-key-bundle": "dev-master"
+        "uecode/api-key-bundle": "dev-master",
+        "codeclimate/php-test-reporter": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
