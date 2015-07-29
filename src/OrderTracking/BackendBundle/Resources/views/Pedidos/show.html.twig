@@ -13,10 +13,17 @@
                 <th>Fecha inicio</th>
                 <td>{{ entity.fechaInicio|date('Y-m-d H:i:s') }}</td>
             </tr>
+            {% if entity.fechaCompletado != NULL %}
             <tr>
                 <th>Fecha completado</th>
                 <td>{{ entity.fechaCompletado|date('Y-m-d H:i:s') }}</td>
             </tr>
+            {% else %}
+            <tr>
+                <th>Fecha completado</th>
+                <td>No completado <span class="glyphicon glyphicon-time" aria-hidden="true"></span></td>
+            </tr>
+            {% endif %}
             <tr>
                 <th>Nombre cliente</th>
                 <td>{{ entity.nombreCliente }}</td>

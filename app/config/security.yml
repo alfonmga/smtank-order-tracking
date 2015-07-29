@@ -12,6 +12,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        db:
+                            id: uecode.api_key.provider.user_provider
         in_memory:
             memory:
                 users:
@@ -23,6 +25,12 @@ security:
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
+        api:
+                            pattern: ^/api/
+                            api_key: true
+                            stateless: true
+                            provider: db
+
         main:
                     pattern: ^/
                     form_login:
@@ -60,3 +68,4 @@ security:
     access_control:
             - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/backend, role: ROLE_ADMIN }
+            - { path: ^/api/, role: ROLE_USER }

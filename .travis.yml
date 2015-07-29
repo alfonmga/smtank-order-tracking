@@ -17,3 +17,4 @@ before_script:
 
 script:
   - phpunit -c app
+  - phpunit --coverage-clover build/logs/clover.xml

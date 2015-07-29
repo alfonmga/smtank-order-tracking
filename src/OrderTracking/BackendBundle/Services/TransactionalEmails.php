@@ -16,7 +16,7 @@ class TransactionalEmails {
             ->setSubject('Sigue el estado de tu pedido #' . $codigoSeguimiento . ' - SMTank.com')
             ->setFrom('contacto@smtank.com')
             ->setTo($email)
-            ->setBody('Hola ' . $nombre . ',<br><br> Desde ahora puedes seguir el estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) en tiempo real. Entra en http://pedidos.smtank.com e introduce tu código de seguimiento. <br><br>Un saludo,<br>SMTank.com.', "text/html");
+            ->setBody('Hola ' . $nombre . ',<br><br> Desde ahora, puedes seguir el estado de tu pedido (ID: <b>' . $codigoSeguimiento . '</b>) en tiempo real. Entra en http://pedidos.smtank.com e introduce tu código de seguimiento. <br><br>Un saludo,<br>SMTank.com.', "text/html");
         $this->mailer->send($mensaje);
 
     }

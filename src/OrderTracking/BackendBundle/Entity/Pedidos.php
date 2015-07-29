@@ -5,6 +5,7 @@ namespace OrderTracking\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Pedidos
@@ -29,6 +30,7 @@ class Pedidos
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicio", type="datetime")
+     *
      */
     private $fechaInicio;
 
@@ -43,6 +45,7 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="nombre_cliente", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nombreCliente;
 
@@ -50,6 +53,7 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="email_cliente", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $emailCliente;
 
@@ -57,6 +61,7 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="nombre_producto", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nombreProducto;
 
@@ -64,6 +69,7 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="precio_producto", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $precioProducto;
 
@@ -71,6 +77,7 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="estado_pedido", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $estadoPedido;
 
@@ -78,13 +85,18 @@ class Pedidos
      * @var string
      *
      * @ORM\Column(name="codigo_seguimiento", type="string", length=255, unique=true)
+     *
      */
     private $codigoSeguimiento;
 
     public function __construct()
     {
         $this->id = new ArrayCollection();
-        $this->fechaInicio = new \DateTime();
+        $this->fechaInicio = new \DateTime('now');
+        $this->estadoPedido = 'pendiente';
+        for ($i = 0; $i < 12; $i++) {
+            $this->codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
+        }
     }
 
     /**

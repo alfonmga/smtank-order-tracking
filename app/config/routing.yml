@@ -1,3 +1,7 @@
+order_tracking_rest:
+    resource: "@OrderTrackingRestBundle/Resources/config/routing.yml"
+    type:     rest
+
 order_tracking_pedido:
     resource: "@OrderTrackingFrontendBundle/Controller"
     type:     annotation

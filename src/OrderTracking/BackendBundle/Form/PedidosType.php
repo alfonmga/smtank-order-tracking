@@ -49,6 +49,6 @@ class PedidosType extends AbstractType
      */
     public function getName()
     {
-        return 'ordertracking_backendbundle_pedidos';
+        return 'pedido_form';
     }
 }
