@@ -92,7 +92,6 @@ class DefaultController extends FOSRestController
      */
     public function updatePedidoAction(Pedidos $pedido, Request $request)
     {
-
         $form = $this->createForm(new PedidosType(), $pedido);
         // El usuario no debe introducir los siguientes valores
         $form->remove('fechaInicio');
@@ -114,7 +113,6 @@ class DefaultController extends FOSRestController
         return array(
             'form' => $form,
         );
-
     }
 
     /**
@@ -130,5 +128,4 @@ class DefaultController extends FOSRestController
 
         return array('estado' => 'eliminado');
     }
-
 }
