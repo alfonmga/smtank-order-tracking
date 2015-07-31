@@ -49,6 +49,6 @@ class PedidosType extends AbstractType
      */
     public function getName()
     {
-        return 'pedido_form';
+        return 'pedido';
     }
 }

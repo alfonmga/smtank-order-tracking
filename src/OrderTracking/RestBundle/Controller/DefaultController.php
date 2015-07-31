@@ -5,7 +5,8 @@ namespace OrderTracking\RestBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\Config\Definition\Exception\Exception,
-    Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
+    Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException,
+    Symfony\Component\HttpFoundation\Response;
 
 use OrderTracking\BackendBundle\Entity\Pedidos,
     OrderTracking\BackendBundle\Form\PedidosType,
@@ -33,7 +34,7 @@ class DefaultController extends FOSRestController
     }
 
     /**
-     * Extraer pedido
+     * Get pedido
      *
      * @Get("/pedido/{codigoSeguimiento}", name="_api_v1")
      */
@@ -63,7 +64,20 @@ class DefaultController extends FOSRestController
             $em->persist($pedido);
             $em->flush();
 
-            return $pedido;
+            $response = new Response();
+            $response->setStatusCode(201);
+            $response->headers->set('Content-Type', 'application/json');
+            $response->headers->set('Location',
+                $this->generateUrl(
+                    'get_pedido_api_v1', array('codigoSeguimiento' => $pedido->getCodigoSeguimiento()),
+                    true // absolute
+                )
+            );
+            $serializer = $this->container->get('serializer');
+            $serializedEntity = $serializer->serialize($pedido, 'json');
+            $response->setContent($serializedEntity);
+
+            return $response;
         }
 
         return array(
@@ -94,9 +108,6 @@ class DefaultController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->get('TransactionalEmails')->pedidoUpdated($pedido->getEstadoPedido(), $pedido->getNombreCliente(),
-                $pedido->getEmailCliente(), $pedido->getCodigoSeguimiento());
-
             return $pedido;
         }
 
@@ -109,7 +120,7 @@ class DefaultController extends FOSRestController
     /**
      * Eliminar pedido
      *
-     * @Delete("/pedido/borrar/{codigoSeguimiento}", name="_api_v1")
+     * @Delete("/pedido/{codigoSeguimiento}", name="_api_v1")
      */
     public function removePedidoAction(Pedidos $pedido)
     {

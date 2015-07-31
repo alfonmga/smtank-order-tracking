@@ -79,7 +79,11 @@ class PedidosSubscriber implements EventSubscriber
                        $notificarCliente = $this->container->get('request')->getSession()->get($PedidoEntity->getId().
                            $PedidoEntity->getCodigoSeguimiento());
 
-                        if($notificarCliente == true) {
+                        /**
+                         * $notificarCliente == true && false (order update from browser)
+                         * $notificarCliente == null (order updated from API REST, always notify client)
+                         */
+                        if($notificarCliente == true || $notificarCliente == null) {
                             $this->container->get('TransactionalEmails')->pedidoUpdated(
                                 $PedidoEntity->getEstadoPedido(), $PedidoEntity->getNombreCliente(),
                                 $PedidoEntity->getEmailCliente(), $PedidoEntity->getCodigoSeguimiento()
