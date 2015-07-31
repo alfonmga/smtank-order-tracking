@@ -70,52 +70,74 @@ Existen dos formas para añadir pedidos al sistema:
     
     ![Add order](https://i.imgur.com/Ef7Jvlg.png)
     
-    Esta opción es manual.
-
 2. **Segunda opción**:
-    
-    Añade pedidos desde una simple API.
-    
-    URL Para realizar el POST:
-    ```
-    http://127.0.0.1:8000/api/crear/{nombre}/{email}/{nombreproducto}/{precio}/{secretkey}
-    ```
-    - {nombre}: Nombre del cliente
-    - {email}: E-mail del cliente
-    - {nombreproducto}: Nombre del producto que ha comprado
-    - {precio}: Precio del producto
-    - {secretkey}: contraseña/key de acceso a la api (se encuentra en parameters.yml)
-    
-    Ejemplo:
-    ```
-    http://smtank.dev/smtank-order-tracking/web/api/crear/Alfonso M./hello@alfonsomga.com/1000 Seguidores de Twitter/9,99/miApiKeySecretaAqui
-    ```
-    ![API Response](https://i.imgur.com/cgJxve7.png)
-    
-    En caso de que el pedido haya sido añadido correctamente la respuesta en formato JSON debería ser siempre la siguiente:
-    ```json
-    {
-      "estado": "success",
-      "codigoSeguimiento": "JOT6CN57664C"
-    }
-    ```
-    
-    Si el api key con el cual has hecho POST es incorrecto la respuesta es la siguiente:
-    
-    ```json
-    {
-      "estado": "access denied"
-    }
-    ```
 
+    Lee la sección <a href="#API-REST">API REST</a> para ver cómo añadir un pedido.
+    
+    Esta opción es perfecta para integrar el sistema con PayPal, Stripe..etc y dar de altas pedidos nuevos al recibir
+    un pago.
+    
+# API REST
+Para utilizar la API necesitas autentificarte en cada solicitud que realices.
+
+Necesitarás enviar en el header de cada solicitud lo siguiente: **'api_key' = tuapikeysecreta**
+
+Puedes encontrar tu api key secreta en la base de datos (columna **api_key** de la tabla **fos_users**).
+## Añadiendo un pedido al sistema
+Envía una solicitud **POST** a **/api/v1/pedido** con el siguiente contenido (ejemplo):
+```json
+{
+  "pedido": {
+    "nombreCliente": "Alfonso M.",
+    "emailCliente": "hello@alfonsomga.com",
+    "nombreProducto": "Posicionamiento web",
+    "precioProducto": "129,99"
+  }
+}
+```
+La respuesta que deberías recibir es la siguiente:
+```json
+{
+  "id": 1,
+  "fecha_inicio": "2015-08-01T00:05:55+0200",
+  "nombre_cliente": "Alfonso M.",
+  "email_cliente": "hello@alfonsomga.com",
+  "nombre_producto": "Posicionamiento web",
+  "precio_producto": "129,99",
+  "estado_pedido": "pendiente",
+  "codigo_seguimiento": "B3Y8XVVG28M8"
+}
+```
+También podrás encontrar en el header el parámetro 'Location' el cual contiene URL desde la cual 
+podrás acceder al recurso que has creado ( http://127.0.0.1:8000/api/v1/pedido/B3Y8XVVG28M8) en este caso.
+## Editando el estado de un pedido
+Para editar el estado de un pedido necesitaremos enviar una solicitud **PUT** a 
+**/api/v1/pedido/K8QIV1KM6KYN** con el siguiente contenido:
+```json
+{
+  "pedido": {
+   "estadoPedido": "en progreso"
+  }
+}
+```
+En este caso hemos cambiado el estado del pedido a "en progreso".
+## Eliminando un pedido
+Envía una solicitud **DELETE** a **/api/v1/pedido/K8QIV1KM6KYN**
+
+Si el pedido ha sido eliminado la respuesta debería ser la siguiente:
+```json
+{
+  "response": "eliminado"
+}
+```
 # Comandos
 ### Añadir pedidos demo
 ```command
 app/console pedidos:add:demo
 ```
-### Eliminar todos los pedidos de la BBDD
+### Eliminar todos los pedidos de la BBDD (no funciona en producción)
 ```command
 app/console pedidos:remove:all
 ```
 ----------------------
-Esto es todo, si tienes cualquier duda o problema házmelo saber 😉
+Esto es todo, para cualquier duda o recomendación ponte en contacto conmigo o abre un issue ;-)

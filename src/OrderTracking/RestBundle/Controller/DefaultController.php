@@ -126,6 +126,6 @@ class DefaultController extends FOSRestController
         $em->remove($pedido);
         $em->flush();
 
-        return array('estado' => 'eliminado');
+        return array('response' => 'eliminado');
     }
 }
