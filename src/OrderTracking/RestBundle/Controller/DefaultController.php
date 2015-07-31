@@ -108,9 +108,6 @@ class DefaultController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->get('TransactionalEmails')->pedidoUpdated($pedido->getEstadoPedido(), $pedido->getNombreCliente(),
-                $pedido->getEmailCliente(), $pedido->getCodigoSeguimiento());
-
             return $pedido;
         }
 
