@@ -24,7 +24,7 @@ class PedidosType extends AbstractType
                                 'pattern' => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
             ))
             ->add('nombreProducto')
-            ->add('precioProducto', 'money')
+            ->add('precioProducto')
             ->add('estadoPedido', 'choice', array(
                 'choices' => array('pendiente' => 'Pendiente', 'en progreso' => 'En progreso', 'completado' => 'Completado', 'cancelado' => 'Cancelado')
             ))
