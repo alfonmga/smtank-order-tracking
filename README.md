@@ -82,7 +82,7 @@ Para utilizar la API necesitas autentificarte en cada solicitud que realices.
 
 Necesitarás enviar en el header de cada solicitud lo siguiente: **'api_key' = tuapikeysecreta**
 
-Puedes encontrar tu api key secreta en la base de datos (columna **api_key** de la tabla **fos_users**).
+Puedes encontrar tu api key secreta en el Backend (sección API) o en la base de datos (columna **api_key** de la tabla **fos_users**).
 ## Añadiendo un pedido al sistema
 Envía una solicitud **POST** a **/api/v1/pedido** con el siguiente contenido (ejemplo):
 ```json
