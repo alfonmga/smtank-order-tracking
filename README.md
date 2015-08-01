@@ -10,11 +10,11 @@ Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código 
 ---------------------------------
 
 ![Homepage](http://i.imgur.com/cokxVgl.png)
-![Back-end order management](http://i.imgur.com/4kFHL2a.png)
-![Back-end logs](http://i.imgur.com/DaPUXkz.png)
+![Back-end order management](https://i.imgur.com/0RmhVgF.png)
+![Back-end logs](https://i.imgur.com/saoptIY.png)
 ![Order information](http://i.imgur.com/Jl6UF0N.png)
 ![404 Page](http://i.imgur.com/BevHFhK.png)
-
+![API](https://i.imgur.com/HZ5DTOI.png)
 
 
 
@@ -68,7 +68,7 @@ Existen dos formas para añadir pedidos al sistema:
 
     Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**":
     
-    ![Add order](https://i.imgur.com/Ef7Jvlg.png)
+    ![Add order](https://i.imgur.com/E2C3SNp.png)
     
 2. **Segunda opción**:
 
@@ -82,7 +82,7 @@ Para utilizar la API necesitas autentificarte en cada solicitud que realices.
 
 Necesitarás enviar en el header de cada solicitud lo siguiente: **'api_key' = tuapikeysecreta**
 
-Puedes encontrar tu api key secreta en la base de datos (columna **api_key** de la tabla **fos_users**).
+Puedes encontrar tu api key secreta en el Backend (sección API) o en la base de datos (columna **api_key** de la tabla **fos_users**).
 ## Añadiendo un pedido al sistema
 Envía una solicitud **POST** a **/api/v1/pedido** con el siguiente contenido (ejemplo):
 ```json
@@ -135,9 +135,9 @@ Si el pedido ha sido eliminado la respuesta debería ser la siguiente:
 ```command
 app/console pedidos:add:demo
 ```
+![Command añadir pedido](https://i.imgur.com/LfLyu8f.png)
 ### Eliminar todos los pedidos de la BBDD (no funciona en producción)
 ```command
 app/console pedidos:remove:all
 ```
-----------------------
-Esto es todo, para cualquier duda o recomendación ponte en contacto conmigo o abre un issue ;-)
+![Command borrar pedido](https://i.imgur.com/NVIJAGw.png)
