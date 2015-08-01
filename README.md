@@ -10,11 +10,11 @@ Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código 
 ---------------------------------
 
 ![Homepage](http://i.imgur.com/cokxVgl.png)
-![Back-end order management](http://i.imgur.com/4kFHL2a.png)
+![Back-end order management](https://i.imgur.com/0RmhVgF.png)
 ![Back-end logs](http://i.imgur.com/DaPUXkz.png)
 ![Order information](http://i.imgur.com/Jl6UF0N.png)
 ![404 Page](http://i.imgur.com/BevHFhK.png)
-
+![API](https://i.imgur.com/HZ5DTOI.png)
 
 
 
@@ -68,7 +68,7 @@ Existen dos formas para añadir pedidos al sistema:
 
     Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**":
     
-    ![Add order](https://i.imgur.com/Ef7Jvlg.png)
+    ![Add order](https://i.imgur.com/E2C3SNp.png)
     
 2. **Segunda opción**:
 
