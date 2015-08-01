@@ -37,6 +37,11 @@ class RemoveAllOrdersCommand extends ContainerAwareCommand
         $Pedidos = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findAll();
         $numPedidos = count($Pedidos);
 
+        if(!$numPedidos > 0) {
+            $output->write('<fg=red>Operación cancelada. No hay pedidos.</fg=red>', true);
+            return;
+        }
+
         $progress = new ProgressBar($output, $numPedidos);
         $progress->start();
 
