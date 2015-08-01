@@ -1,0 +1,17 @@
+{% extends '::base_backend.html.twig' %}
+{% block title %}API REST - SMTank.com{% endblock %}
+{% block body %}
+<div class="col-md-12" style="text-align: center">
+    Mi API key secreta:
+    <br>
+    <input type="text" disabled value="{{ apikey }}" style="margin-top: 5px; margin-bottom: 4px; width: 350px; font-weight: bold">
+    <form method="post" action="{{ path('backend_api_reset') }}">
+        <button type="submit" class="btn btn-danger btn-sm">Generar nueva api key secreta</button>
+    </form>
+</div>
+<div class="col-md-12" style="margin-top: 50px; text-align: center">
+    <a href="/backend/api/doc"><button class="btn btn-primary btn-lg">Ver documentación de la API <span class="glyphicon glyphicon-file"></span></button></a>
+    <br>
+    Documentación generada por <a href="https://github.com/nelmio/NelmioApiDocBundle">NelmioApiDocBundle</a>
+</div>    
+{% endblock %}
