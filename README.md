@@ -12,9 +12,9 @@ Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código 
 ![Homepage](http://i.imgur.com/cokxVgl.png)
 ![Back-end order management](https://i.imgur.com/0RmhVgF.png)
 ![Back-end logs](https://i.imgur.com/saoptIY.png)
+![API](https://i.imgur.com/HZ5DTOI.png)
 ![Order information](http://i.imgur.com/Jl6UF0N.png)
 ![404 Page](http://i.imgur.com/BevHFhK.png)
-![API](https://i.imgur.com/HZ5DTOI.png)
 
 
 
