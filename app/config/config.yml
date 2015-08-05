@@ -139,3 +139,5 @@ fos_rest:
 uecode_api_key:
     delivery: header
     parameter_name: api_key
+
+nelmio_api_doc: ~
