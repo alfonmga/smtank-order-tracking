@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new OrderTracking\RestBundle\OrderTrackingRestBundle(),
             new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

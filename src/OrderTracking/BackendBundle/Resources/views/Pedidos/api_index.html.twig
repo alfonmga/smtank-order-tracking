@@ -10,7 +10,7 @@
     </form>
 </div>
 <div class="col-md-12" style="margin-top: 50px; text-align: center">
-    <a href="/backend/api/doc"><button class="btn btn-primary btn-lg">Ver documentación de la API <span class="glyphicon glyphicon-file"></span></button></a>
+    <a href="{{ path('nelmio_api_doc_index', {'view': 'x'}) }}"><button class="btn btn-primary btn-lg">Ver documentación de la API <span class="glyphicon glyphicon-file"></span></button></a>
     <br>
     Documentación generada por <a href="https://github.com/nelmio/NelmioApiDocBundle">NelmioApiDocBundle</a>
 </div>    
