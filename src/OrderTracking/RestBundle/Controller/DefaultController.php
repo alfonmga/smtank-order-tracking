@@ -19,11 +19,20 @@ use FOS\RestBundle\Controller\FOSRestController,
     FOS\RestBundle\Controller\Annotations\Put,
     FOS\RestBundle\Controller\Annotations\Delete;
 
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+
 class DefaultController extends FOSRestController
 {
     /**
      * Extraer todos los pedidos
      *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Ver todos los pedidos",
+     *   statusCodes = {
+     *     200 = "Returned when successful"
+     *   }
+     * )
      * @Get("/pedidos", name="_api_v1")
      */
     public function getPedidosAction()
