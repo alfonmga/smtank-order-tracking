@@ -43,8 +43,22 @@ class DefaultController extends FOSRestController
     }
 
     /**
-     * Get pedido
+     * Extraer pedido
      *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Ver pedido",
+     *   requirements={
+     *      {
+     *          "name"="Código de seguimiento",
+     *          "dataType"="integer",
+     *          "requirement"="\d+"
+     *      }
+     * },
+     *   statusCodes = {
+     *     200 = "Returned when successful"
+     *   }
+     * )
      * @Get("/pedido/{codigoSeguimiento}", name="_api_v1")
      */
     public function getPedidoAction(Pedidos $pedido)
