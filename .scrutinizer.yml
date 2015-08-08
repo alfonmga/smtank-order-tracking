@@ -3,12 +3,12 @@ build:
     php:
       version: 5.5
   tests:
-    override:
-      -
-        command: phpunit --coverage-clover=my-coverage-file
-        coverage:
-          file: my-coverage-file
-          format: php-clover
+        override:
+            -
+                command: 'phpunit --coverage-clover=some-file'
+                coverage:
+                    file: 'some-file'
+                    format: 'php-clover'
 checks:
     php:
       code_rating: true
