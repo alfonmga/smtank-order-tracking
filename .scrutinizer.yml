@@ -15,7 +15,7 @@ checks:
       duplication: true
       
 before_commands:
-  - 'pwd' #test 1
+  - pwd #test 1
   - 'cp app/config/parameters.yml.ci app/config/parameters.yml'
   - 'cp app/config/parameters.yml app/config/parameters.yml.dist'
   - 'composer install --prefer-source'
