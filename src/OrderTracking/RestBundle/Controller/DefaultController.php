@@ -30,7 +30,6 @@ class DefaultController extends FOSRestController
      *   resource = true,
      *   description = "Ver todos los pedidos",
      *   statusCodes = {
-     *     200 = "Returned when successful"
      *   }
      * )
      * @Get("/pedidos", name="_api_v1")
@@ -56,10 +55,9 @@ class DefaultController extends FOSRestController
      *      }
      * },
      *   statusCodes = {
-     *     200 = "Returned when successful"
      *   }
      * )
-     * @Get("/pedido/{codigoSeguimiento}", name="_api_v1")
+     * @Get("/pedidos/{codigoSeguimiento}", name="_api_v1")
      */
     public function getPedidoAction(Pedidos $pedido)
     {
@@ -69,7 +67,14 @@ class DefaultController extends FOSRestController
     /**
      * Crear pedido nuevo
      *
-     * @Post("/pedido", name="_api_v1")
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Crear pedido",
+     *   input="OrderTracking\BackendBundle\Form\PedidosType",
+     *   statusCodes = {
+     *   }
+     * )
+     * @Post("/pedidos", name="_api_v1")
      */
     public function newPedidoAction(Request $request)
     {
@@ -111,7 +116,20 @@ class DefaultController extends FOSRestController
     /**
      * Actualizar estado de un pedido
      *
-     * @Put("/pedido/{codigoSeguimiento}", name="_api_v1")
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Actualizar",
+     *   requirements={
+     *      {
+     *          "name"="Código de seguimiento",
+     *          "dataType"="integer",
+     *          "requirement"="\d+"
+     *      }
+     * },
+     *   statusCodes = {
+     *   }
+     * )
+     * @Put("/pedidos/{codigoSeguimiento}", name="_api_v1")
      */
     public function updatePedidoAction(Pedidos $pedido, Request $request)
     {
@@ -141,7 +159,20 @@ class DefaultController extends FOSRestController
     /**
      * Eliminar pedido
      *
-     * @Delete("/pedido/{codigoSeguimiento}", name="_api_v1")
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Eliminar pedido",
+     *   requirements={
+     *      {
+     *          "name"="Código de seguimiento",
+     *          "dataType"="integer",
+     *          "requirement"="\d+"
+     *      }
+     * },
+     *   statusCodes = {
+     *   }
+     * )
+     * @Delete("/pedidos/{codigoSeguimiento}", name="_api_v1")
      */
     public function removePedidoAction(Pedidos $pedido)
     {
