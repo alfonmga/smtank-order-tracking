@@ -40,7 +40,6 @@ parameters:
     locale: es
     secret: ThisTokenIsNotSoSecretChangeIt
     database_path: null
-    apikey: miApiKeySecretaAqui
 ```
 ### Paso 3: Permisos
 Los directorios **app/cache/** y **app/logs/** necesitan permisos de escritura.
