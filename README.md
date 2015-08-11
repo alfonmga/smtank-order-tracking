@@ -83,7 +83,7 @@ Necesitarás enviar en el header de cada solicitud lo siguiente: **'api_key' = t
 
 Puedes encontrar tu api key secreta en el Backend (sección API) o en la base de datos (columna **api_key** de la tabla **fos_users**).
 ## Añadiendo un pedido al sistema
-Envía una solicitud **POST** a **/api/v1/pedido** con el siguiente contenido (ejemplo):
+Envía una solicitud **POST** a **/api/v1/pedidos** con el siguiente contenido (ejemplo):
 ```json
 {
   "pedido": {
@@ -111,7 +111,7 @@ También podrás encontrar en el header el parámetro 'Location' el cual contien
 podrás acceder al recurso que has creado ( http://127.0.0.1:8000/api/v1/pedido/B3Y8XVVG28M8) en este caso.
 ## Editando el estado de un pedido
 Para editar el estado de un pedido necesitaremos enviar una solicitud **PUT** a 
-**/api/v1/pedido/K8QIV1KM6KYN** con el siguiente contenido:
+**/api/v1/pedidos/K8QIV1KM6KYN** con el siguiente contenido:
 ```json
 {
   "pedido": {
@@ -121,7 +121,7 @@ Para editar el estado de un pedido necesitaremos enviar una solicitud **PUT** a
 ```
 En este caso hemos cambiado el estado del pedido a "en progreso".
 ## Eliminando un pedido
-Envía una solicitud **DELETE** a **/api/v1/pedido/K8QIV1KM6KYN**
+Envía una solicitud **DELETE** a **/api/v1/pedidos/K8QIV1KM6KYN**
 
 Si el pedido ha sido eliminado la respuesta debería ser la siguiente:
 ```json
