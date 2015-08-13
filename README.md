@@ -55,13 +55,17 @@ $ sudo composer install
 $ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
 ```
-### Paso 6: Crea un usuario Admin para el Back-End
+### Paso 6: Iniciar web server
+```
+$ php app/console server:start
+```
+### Paso 7: Crea un usuario Admin para el Back-End
 ```
 $ php app/console fos:user:create Usuario prueba@ejemplo.com p@ssword
 $ php app/console fos:user:promote Usuario --super
 ```
 Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
-### Paso 7: Añade un pedido al sistema
+### Paso 8: Añade un pedido al sistema
 Existen dos formas para añadir pedidos al sistema:
 
 1. **Primera opción**:
