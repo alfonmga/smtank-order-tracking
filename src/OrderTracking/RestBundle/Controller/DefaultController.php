@@ -72,6 +72,7 @@ class DefaultController extends FOSRestController
      *   description = "Crear pedido",
      *   input="OrderTracking\BackendBundle\Form\PedidosType",
      *   statusCodes = {
+     *     201 = "Returned when successful"
      *   }
      * )
      * @Post("/pedidos", name="_api_v1")
