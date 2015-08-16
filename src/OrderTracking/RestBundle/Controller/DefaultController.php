@@ -56,6 +56,7 @@ class DefaultController extends FOSRestController
      *      }
      * },
      *   statusCodes = {
+     *      200 = "Returned when successful"
      *   }
      * )
      * @Get("/pedidos/{codigoSeguimiento}", name="_api_v1")
