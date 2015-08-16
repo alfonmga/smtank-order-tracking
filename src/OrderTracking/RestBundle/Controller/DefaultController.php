@@ -30,6 +30,7 @@ class DefaultController extends FOSRestController
      *   resource = true,
      *   description = "Ver todos los pedidos",
      *   statusCodes = {
+     *      200 = "Returned when successful"
      *   }
      * )
      * @Get("/pedidos", name="_api_v1")
