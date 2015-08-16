@@ -30,6 +30,7 @@ class DefaultController extends FOSRestController
      *   resource = true,
      *   description = "Ver todos los pedidos",
      *   statusCodes = {
+     *      200 = "Returned when successful"
      *   }
      * )
      * @Get("/pedidos", name="_api_v1")
@@ -72,6 +73,7 @@ class DefaultController extends FOSRestController
      *   description = "Crear pedido",
      *   input="OrderTracking\BackendBundle\Form\PedidosType",
      *   statusCodes = {
+     *     201 = "Returned when successful"
      *   }
      * )
      * @Post("/pedidos", name="_api_v1")
