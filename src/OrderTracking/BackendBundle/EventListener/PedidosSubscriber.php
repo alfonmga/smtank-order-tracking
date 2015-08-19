@@ -80,8 +80,8 @@ class PedidosSubscriber implements EventSubscriber
                            $PedidoEntity->getCodigoSeguimiento());
 
                         /**
-                         * $notificarCliente == true && false (order update from browser)
-                         * $notificarCliente == null (order updated from API REST, always notify client)
+                         * $notificarCliente == true && false (pedido actualizado desde backend)
+                         * $notificarCliente == null (pedido actualizado desde API REST, siempre notificar al cliente)
                          */
                         if($notificarCliente == true || $notificarCliente == null) {
                             $this->container->get('TransactionalEmails')->pedidoUpdated(
