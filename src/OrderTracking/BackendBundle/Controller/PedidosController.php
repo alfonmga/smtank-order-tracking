@@ -49,8 +49,8 @@ class PedidosController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $entity->setFechaInicio(date_create(date('Y-m-d H:i:s')));
+            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
@@ -79,7 +79,9 @@ class PedidosController extends Controller
         $form->add('estadoPedido', 'choice', array(
             'choices' => array('pendiente' => 'Pendiente')
         ));
+        $form->get('codigoSeguimiento')->setData($this->get('trackcodegenerator')->generate());
         $form->add('submit', 'submit', array('label' => 'Create'));
+
 
         return $form;
     }
