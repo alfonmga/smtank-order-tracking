@@ -94,9 +94,6 @@ class Pedidos
         $this->id = new ArrayCollection();
         $this->fechaInicio = new \DateTime('now');
         $this->estadoPedido = 'pendiente';
-        for ($i = 0; $i < 12; $i++) {
-            $this->codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
-        }
     }
 
     /**
