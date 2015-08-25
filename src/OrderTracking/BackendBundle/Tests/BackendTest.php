@@ -4,9 +4,9 @@ namespace OrderTracking\BackendBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PedidosControllerTest extends WebTestCase
+class BackendTest extends WebTestCase
 {
-    public function testCompleteScenario()
+    public function testCompleteBackendScenario()
     {
         /**
          * Comprobar si al intentar acceder al backend es redireccionado al no estar logueado como admin.
@@ -19,5 +19,8 @@ class PedidosControllerTest extends WebTestCase
             0,
             $crawler->filter('html:contains("Nombre de usuario:")')->count()
         );
+
+        // @TODO TDD: Crear un pedido manualmente desde backend y realizar comprobación.
+        // @TODO TDD: Editar información de un pedido.
     }
 }

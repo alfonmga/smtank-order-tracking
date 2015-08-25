@@ -12,7 +12,7 @@ use OrderTracking\BackendBundle\Form\PedidosType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Pedidos controller.
+ * CRUD Pedidos controller.
  *
  * @Route("/backend")
  */

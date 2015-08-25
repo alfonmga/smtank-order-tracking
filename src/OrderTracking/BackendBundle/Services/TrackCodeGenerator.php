@@ -1,8 +1,13 @@
 <?php
 
-
 namespace OrderTracking\BackendBundle\Services;
 
+/**
+ * Generador de códigos de seguimiento.
+ *
+ * Class TrackCodeGenerator
+ * @package OrderTracking\BackendBundle\Services
+ */
 class TrackCodeGenerator {
 
     public function generate() {
