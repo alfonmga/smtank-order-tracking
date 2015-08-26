@@ -11,6 +11,13 @@ use OrderTracking\BackendBundle\Entity\Pedidos;
 use OrderTracking\BackendBundle\Entity\Historial;
 use Symfony\Component\Console\Helper\ProgressBar;
 
+/**
+ * Genera un número de pedidos demo determinado.
+ * Los datos de cada pedido son generados por el Service DemoDataGenerator.
+ *
+ * Class AddPedidoDemoCommand
+ * @package OrderTracking\BackendBundle\Command
+ */
 class AddPedidoDemoCommand extends ContainerAwareCommand
 {
     /**
@@ -75,61 +82,7 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
             $em->persist($Pedido);
             $em->flush();
 
-            // TODO Crear un Service para generar los historiales.
-            switch ($Pedido->getEstadoPedido()) {
-
-                case 'en progreso':
-                    $Historial = new Historial();
-                    $Historial->setEstado('pendiente');
-                    $Historial->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandInferior($fechaObject->getTimestamp()));
-                    $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial->setParentId($Pedido);
-
-                    $em->persist($Historial);
-                    break;
-
-                case 'completado':
-                    $Historial = new Historial();
-                    $Historial->setEstado('pendiente');
-                    $Historial->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandInferior($fechaObject->getTimestamp()));
-                    $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial->setParentId($Pedido);
-
-                    $Historial2 = new Historial();
-                    $Historial2->setEstado('en progreso');
-                    $Historial2->setFecha($tempdate1 = $this->getContainer()->get('demodatagenerator')->fechaRandSuperior($fechaObject->getTimestamp()));
-                    $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial2->setParentId($Pedido);
-
-                    $Historial3 = $em->getRepository('OrderTrackingBackendBundle:Historial')->findOneBy(
-                        array('parentId' => $Pedido->getId(), 'estado' => 'completado'));
-                    $Historial3->setFecha($this->getContainer()->get('demodatagenerator')
-                        ->fechaRandSuperior($tempdate1->getTimestamp()));
-
-                    $Pedido->setFechaCompletado($this->getContainer()->get('demodatagenerator')->fechaRandSuperior($tempdate1->getTimestamp()));
-                    $em->persist($Pedido);
-                    $em->persist($Historial);
-                    $em->persist($Historial2);
-                    $em->persist($Historial3);
-                    break;
-
-                case 'cancelado':
-                    $Historial = new Historial();
-                    $Historial->setEstado('pendiente');
-                    $Historial->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandInferior($fechaObject->getTimestamp()));
-                    $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial->setParentId($Pedido);
-
-                    $Historial2 = new Historial();
-                    $Historial2->setEstado('en progreso');
-                    $Historial2->setFecha($tempdate1 = $this->getContainer()->get('demodatagenerator')->fechaRandSuperior($fechaObject->getTimestamp()));
-                    $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial2->setParentId($Pedido);
-
-                    $em->persist($Historial);
-                    $em->persist($Historial2);
-                    break;
-            }
+            $this->getContainer()->get('HistorialGenerator')->generate($Pedido);
 
             $em->flush();
             $progress->advance();
