@@ -63,7 +63,7 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
             $Pedido->setNombreCliente($this->getContainer()->get('DemoDataGenerator')->nombreCliente());
             $Pedido->setEmailCliente($this->getContainer()->get('DemoDataGenerator')->emailCliente());
             $Pedido->setEstadoPedido($this->getContainer()->get('DemoDataGenerator')->estadoPedido());
-            $Pedido->setCodigoSeguimiento($this->getContainer()->get('DemoDataGenerator')->codigoSeguimiento());
+            $Pedido->setCodigoSeguimiento($this->getContainer()->get('trackcodegenerator')->generate());
             $Pedido->setNombreProducto($this->getContainer()->get('DemoDataGenerator')->nombreProducto());
             $Pedido->setPrecioProducto($this->getContainer()->get('DemoDataGenerator')->precioProducto());
 
@@ -75,38 +75,23 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
             $em->persist($Pedido);
             $em->flush();
 
+            // TODO Crear un Service para generar los historiales.
             switch ($Pedido->getEstadoPedido()) {
-                case 'pendiente':
-                    $Historial = new Historial();
-                    $Historial->setEstado('pendiente');
-                    $Historial->setFecha($fechaObject);
-                    $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial->setParentId($Pedido);
-
-                    $em->persist($Historial);
-                    break;
 
                 case 'en progreso':
                     $Historial = new Historial();
                     $Historial->setEstado('pendiente');
-                    $Historial->setFecha($fechaObject);
+                    $Historial->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandInferior($fechaObject->getTimestamp()));
                     $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
                     $Historial->setParentId($Pedido);
 
-                    $Historial2 = new Historial();
-                    $Historial2->setEstado('en progreso');
-                    $Historial2->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandSuperior($fechaObject->getTimestamp()));
-                    $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial2->setParentId($Pedido);
-
                     $em->persist($Historial);
-                    $em->persist($Historial2);
                     break;
 
                 case 'completado':
                     $Historial = new Historial();
                     $Historial->setEstado('pendiente');
-                    $Historial->setFecha($fechaObject);
+                    $Historial->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandInferior($fechaObject->getTimestamp()));
                     $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
                     $Historial->setParentId($Pedido);
 
@@ -116,14 +101,12 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
                     $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
                     $Historial2->setParentId($Pedido);
 
-                    $Historial3 = new Historial();
-                    $Historial3->setEstado('completado');
-                    $Historial3->setFecha($tempdate2 = $this->getContainer()->get('demodatagenerator')->fechaRandSuperior($tempdate1->getTimestamp()));
-                    $Historial3->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial3->setParentId($Pedido);
+                    $Historial3 = $em->getRepository('OrderTrackingBackendBundle:Historial')->findOneBy(
+                        array('parentId' => $Pedido->getId(), 'estado' => 'completado'));
+                    $Historial3->setFecha($this->getContainer()->get('demodatagenerator')
+                        ->fechaRandSuperior($tempdate1->getTimestamp()));
 
-                    $Pedido->setFechaCompletado($tempdate2);
-
+                    $Pedido->setFechaCompletado($this->getContainer()->get('demodatagenerator')->fechaRandSuperior($tempdate1->getTimestamp()));
                     $em->persist($Pedido);
                     $em->persist($Historial);
                     $em->persist($Historial2);
@@ -133,7 +116,7 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
                 case 'cancelado':
                     $Historial = new Historial();
                     $Historial->setEstado('pendiente');
-                    $Historial->setFecha($fechaObject);
+                    $Historial->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandInferior($fechaObject->getTimestamp()));
                     $Historial->setIdPedido($Pedido->getCodigoSeguimiento());
                     $Historial->setParentId($Pedido);
 
@@ -143,15 +126,8 @@ class AddPedidoDemoCommand extends ContainerAwareCommand
                     $Historial2->setIdPedido($Pedido->getCodigoSeguimiento());
                     $Historial2->setParentId($Pedido);
 
-                    $Historial3 = new Historial();
-                    $Historial3->setEstado('cancelado');
-                    $Historial3->setFecha($this->getContainer()->get('demodatagenerator')->fechaRandSuperior($tempdate1->getTimestamp()));
-                    $Historial3->setIdPedido($Pedido->getCodigoSeguimiento());
-                    $Historial3->setParentId($Pedido);
-
                     $em->persist($Historial);
                     $em->persist($Historial2);
-                    $em->persist($Historial3);
                     break;
             }
 

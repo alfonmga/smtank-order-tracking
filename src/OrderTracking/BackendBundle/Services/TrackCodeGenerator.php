@@ -12,4 +12,5 @@ class TrackCodeGenerator {
         }
         return $codigoSeguimiento;
     }
+
 }

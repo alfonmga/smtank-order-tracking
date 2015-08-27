@@ -6,8 +6,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class DemoDataGenerator {
 
-    public function nombreCliente()
-    {
+    public function nombreCliente() {
         $nombreClientes = array(
             "Alfonso M.",
             "John Doe",
@@ -24,8 +23,7 @@ class DemoDataGenerator {
         return $data;
     }
 
-    public function emailCliente()
-    {
+    public function emailCliente() {
         $emailClientes = array(
             "hello@alfonso.com",
             "john@doe.com",
@@ -39,8 +37,7 @@ class DemoDataGenerator {
         return $data;
     }
 
-    public function estadoPedido()
-    {
+    public function estadoPedido() {
         $estadosPedido = array(
             "pendiente",
             "en progreso",
@@ -51,18 +48,7 @@ class DemoDataGenerator {
         return $data;
     }
 
-    public function codigoSeguimiento()
-    {
-        $codigoSeguimiento = '';
-        for ($i = 0; $i < 12; $i++) {
-            $codigoSeguimiento .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('A'), ord('Z')));
-        }
-        $data = $codigoSeguimiento;
-        return $data;
-    }
-
-    public function nombreProducto()
-    {
+    public function nombreProducto() {
         $nombreProductos = array(
             "Seguidores de Twitter",
             "Likes de Facebook",
@@ -81,8 +67,7 @@ class DemoDataGenerator {
         return $data;
     }
 
-    public function precioProducto()
-    {
+    public function precioProducto() {
         $precioProductos = array(
             "29,99",
             "9,99",
@@ -97,22 +82,30 @@ class DemoDataGenerator {
         return $data;
     }
 
-    public function fechaInicio()
-    {
+    public function fechaInicio() {
         $date = new \DateTime();
         $data = $date->getTimestamp();
         return $data;
     }
 
-    public function fechaRandSuperior($date) {
+    public function fechaRandInferior($date) {
+        $newDate = new \DateTime();
+        $newDate->setTimestamp($date);
+        $newDate->modify('-'.rand(1,28).'days');
+        $newDate->modify('-'.rand(1,24).'hours');
+        $newDate->modify('-'.rand(1,60).'minutes');
+        $newDate->modify('-'.rand(1,60).'seconds');
+        return $newDate;
+    }
 
+    public function fechaRandSuperior($date) {
         $newDate = new \DateTime();
         $newDate->setTimestamp($date);
         $newDate->modify('+'.rand(1,28).'days');
         $newDate->modify('+'.rand(1,24).'hours');
         $newDate->modify('+'.rand(1,60).'minutes');
         $newDate->modify('+'.rand(1,60).'seconds');
-
         return $newDate;
     }
+
 }

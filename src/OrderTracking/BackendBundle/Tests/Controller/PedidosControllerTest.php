@@ -9,11 +9,11 @@ class PedidosControllerTest extends WebTestCase
     public function testCompleteScenario()
     {
         /**
-         * Comprobar si al intentar acceder al Backend es redireccionado a la página de login
+         * Comprobar si al intentar acceder al backend es redireccionado al no estar logueado como admin.
          */
         $client = static::createClient();
-        $client->request('GET', '/backend/');
-        $this->assertEquals(302, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /backend/");
+        $client->request('GET', '/backend/nuevo');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $crawler = $client->followRedirect();
         $this->assertGreaterThan(
             0,
