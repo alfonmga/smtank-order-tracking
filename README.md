@@ -3,7 +3,7 @@
 <p align="center"><img width="250" height="128" src="http://i.imgur.com/AtFS9Ie.png"/></p>
 # Sistema de seguimiento de pedidos para SMTank.com
 ### Información
-Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.10).
+Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.11).
 
 
 Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
@@ -59,13 +59,19 @@ $ php app/console doctrine:schema:create
 ```
 $ php app/console server:start
 ```
-### Paso 7: Crea un usuario Admin para el Back-End
+### Paso 7: Corre los tests
+Antes de crear un user admin y acceder al backend, comprueba que todo funcione correctamente.
+```
+$ bin/phpunit -c app
+```
+![TDD](https://i.imgur.com/V8YwmhO.png)
+### Paso 8: Crea un usuario Admin para el Back-End
 ```
 $ php app/console fos:user:create Usuario prueba@ejemplo.com p@ssword
 $ php app/console fos:user:promote Usuario --super
 ```
 Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
-### Paso 8: Añade un pedido al sistema
+### Paso 9: Añade un pedido al sistema
 Existen dos formas para añadir pedidos al sistema:
 
 1. **Primera opción**:
