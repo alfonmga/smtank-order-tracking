@@ -2,6 +2,12 @@
 
 namespace OrderTracking\BackendBundle\Services;
 
+/**
+ * E-mails transaccionales utilizado en la aplicación.
+ *
+ * Class TransactionalEmails
+ * @package OrderTracking\BackendBundle\Services
+ */
 class TransactionalEmails {
 
     private $mailer;
@@ -10,6 +16,14 @@ class TransactionalEmails {
         $this->mailer = $mailer;
     }
 
+    /**
+     * @TODO Añadir plantilla HTML + Iconos..etc
+     * E-mail utilizado en nuevos pedidos.
+     *
+     * @param $nombre || Nombre del cliente
+     * @param $email || E-mail del cliente
+     * @param $codigoSeguimiento || Código de seguimiento del pedido realizado por el cliente
+     */
     public function newPedido($nombre, $email, $codigoSeguimiento) {
         $mensaje = \Swift_Message::newInstance()
             ->setSubject('Sigue el estado de tu pedido #' . $codigoSeguimiento . ' - SMTank.com')
@@ -19,6 +33,15 @@ class TransactionalEmails {
         $this->mailer->send($mensaje);
     }
 
+    /**
+     * @TODO Añadir plantilla HTML + Iconos..etc
+     * E-mail alertado de actualización del pedido.
+     *
+     * @param $estado || Estado del pedido
+     * @param $nombre || Nombre del cliente
+     * @param $email || E-mail del cliente
+     * @param $codigoSeguimiento || Código de seguimiento del pedido realizado por el cliente
+     */
     public function pedidoUpdated($estado, $nombre, $email, $codigoSeguimiento) {
         $mensaje = \Swift_Message::newInstance()
             ->setSubject('Pedido actualizado (' . $estado . ') - SMTank.com')
@@ -28,4 +51,8 @@ class TransactionalEmails {
         $this->mailer->send($mensaje);
     }
 
+    // @TODO Añadir un nuevo E-mail para pedido completado
+    public function pedidoCompleted()
+    {
+    }
 }
