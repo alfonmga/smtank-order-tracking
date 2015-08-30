@@ -2,8 +2,12 @@
 
 namespace OrderTracking\BackendBundle\Services;
 
-use Symfony\Component\Validator\Constraints\DateTime;
-
+/**
+ * Datos utilizado para generar pedidos demo.
+ *
+ * Class DemoDataGenerator
+ * @package OrderTracking\BackendBundle\Services
+ */
 class DemoDataGenerator {
 
     public function nombreCliente() {
@@ -88,6 +92,10 @@ class DemoDataGenerator {
         return $data;
     }
 
+    /**
+     * @param $date || fecha en formato timestamp
+     * @return \DateTime
+     */
     public function fechaRandInferior($date) {
         $newDate = new \DateTime();
         $newDate->setTimestamp($date);
@@ -98,6 +106,10 @@ class DemoDataGenerator {
         return $newDate;
     }
 
+    /**
+     * @param $date || fecha en formato timestamp
+     * @return \DateTime
+     */
     public function fechaRandSuperior($date) {
         $newDate = new \DateTime();
         $newDate->setTimestamp($date);

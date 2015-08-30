@@ -2,21 +2,19 @@
 
 namespace OrderTracking\BackendBundle\EventListener;
 
-use Doctrine\Common\EventSubscriber,
-    Doctrine\ORM\Event\OnFlushEventArgs,
+use Doctrine\ORM\Event\OnFlushEventArgs,
     Doctrine\ORM\Events,
-    Doctrine\ORM\Event\LifecycleEventArgs;
+    Doctrine\ORM\Event\LifecycleEventArgs,
+    Doctrine\Common\EventSubscriber;
 
 use OrderTracking\BackendBundle\Entity\Pedidos,
     OrderTracking\BackendBundle\Entity\Historial;
-
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class PedidosSubscriber implements EventSubscriber
 {
     private $container;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct($container)
     {
         $this->container = $container;
     }
@@ -28,6 +26,9 @@ class PedidosSubscriber implements EventSubscriber
 
         if($PedidoEntity instanceof Pedidos)
         {
+            /**
+             * Un historial es creado con el estado del nuevo pedido que ha sido persistido.
+             */
             $Historial = new Historial();
             $Historial->setEstado($PedidoEntity->getEstadoPedido());
             $Historial->setIdPedido($PedidoEntity->getCodigoSeguimiento());
@@ -46,17 +47,18 @@ class PedidosSubscriber implements EventSubscriber
         $em  = $args->getEntityManager();
         $uow = $em->getUnitOfWork();
 
+        /**
+         * 1. Comprobamos el último historial del pedido
+         * 2. En caso de que no conste ningún historial entonces creamos uno con estado 'pendiente'
+         * 3. Si existe historial comparamos el estado del pedido con el estado del último historial,
+         *    en caso de que sean iguales no hacemos nada, si es diferente creamos un nuevo historial con el
+         *    nuevo estado.
+         * 4. Notificar cliente si el checkbox es TRUE o NULL (API REST)
+         **/
         foreach ($uow->getScheduledEntityUpdates() as $updated) {
             if ($updated instanceof Pedidos) {
                 $PedidoEntity = $updated;
-                /**
-                 * 1. Comprobamos el último historial del pedido
-                 * 2. En caso de que no conste ningún historial entonces creamos uno con estado 'pendiente'
-                 * 3. Si existe historial comparamos el estado del pedido con el estado del último historial,
-                 *    en caso de que sean iguales no hacemos nada, si es diferente creamos un nuevo historial con el
-                 *    nuevo estado.
-                 * 4. Notificar cliente si el checkbox es TRUE o NULL (API REST)
-                 **/
+
                 $ultimoHistorial = $em->getRepository('OrderTrackingBackendBundle:Historial')->findOneBy(array('parentId' =>
                     $PedidoEntity), array('id' => 'DESC'));
 
@@ -76,6 +78,11 @@ class PedidosSubscriber implements EventSubscriber
                             $md = $em->getClassMetadata('OrderTracking\BackendBundle\Entity\Pedidos');
                             $uow->recomputeSingleEntityChangeSet($md, $PedidoEntity);
                         }
+
+                        /**
+                         * Si el pedido ha sido actualizado desde el backend deberiamos obtener un true or false para
+                         * saber si notificar por e-mail al cliente sobre la actualización de su pedido.
+                         */
                        $notificarCliente = $this->container->get('request')->getSession()->get($PedidoEntity->getId().
                            $PedidoEntity->getCodigoSeguimiento());
 
