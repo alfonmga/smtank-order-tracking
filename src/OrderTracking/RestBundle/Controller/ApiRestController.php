@@ -21,7 +21,7 @@ use FOS\RestBundle\Controller\FOSRestController,
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-class DefaultController extends FOSRestController
+class ApiRestController extends FOSRestController
 {
     /**
      * Extraer todos los pedidos
