@@ -6,6 +6,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Helper\ProgressBar;
 
+/**
+ * Command para eliminar todos los pedidos existentes en la base de datos.
+ * Este comando solo puede ser ejecutado en un entorno de desarrollo (dev).
+ *
+ * Class RemoveAllOrdersCommand
+ * @package OrderTracking\BackendBundle\Command
+ */
 class RemoveAllOrdersCommand extends ContainerAwareCommand
 {
     /**

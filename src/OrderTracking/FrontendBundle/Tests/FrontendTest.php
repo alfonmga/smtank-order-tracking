@@ -14,9 +14,7 @@ class FrontendTest extends WebTestCase
     {
         self::bootKernel();
         $this->container = static::$kernel->getContainer();
-        $this->em = $this->container->get('doctrine')
-            ->getManager()
-        ;
+        $this->em = $this->container->get('doctrine')->getManager();
     }
 
     public function testCompleteFrontendScenario()
@@ -66,7 +64,7 @@ class FrontendTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('html:contains("'.$order->getNombreProducto().'")')->count());
         $this->assertGreaterThan(0, $crawler->filter('html:contains("'.$order->getPrecioProducto().'")')->count());
 
-        // @TODO TDD: Enviar un mensaje de soporte y comprobar flashmessage + email enviado.
+        // @TODO TDD: Enviar un mensaje de soporte y comprobar flashbag + email enviado.
 
         // Eliminar pedido
         $this->em->remove($order);

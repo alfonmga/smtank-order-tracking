@@ -31,6 +31,7 @@ class SitioController extends Controller
 
         if ($request->isMethod('POST')) {
             $referer = $request->headers->get('referer');
+            // @TODO Añadir seguridad CSRF + email_cliente && nombre_cliente deben de ser obtenido desde la BDD.
             $message = \Swift_Message::newInstance()
                 ->setSubject('Mensaje desde página de seguimiento - PEDIDO: ' . $request->request->get('id_pedido'))
                 ->setFrom('contacto@smtank.com')

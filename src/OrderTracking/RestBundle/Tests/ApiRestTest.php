@@ -8,6 +8,6 @@ class ApiRestTest extends WebTestCase
 {
     public function testIndex()
     {
-
+        // @TODO TDD: Añadir tests básicos.
     }
 }
