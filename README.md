@@ -143,11 +143,11 @@ Si el pedido ha sido eliminado la respuesta debería ser la siguiente:
 # Comandos
 ### Añadir pedidos demo
 ```command
-app/console pedidos:add:demo
+$ app/console pedidos:add:demo
 ```
 ![Command añadir pedido](https://i.imgur.com/LfLyu8f.png)
 ### Eliminar todos los pedidos de la BBDD (no funciona en producción)
 ```command
-app/console pedidos:remove:all
+$ app/console pedidos:remove:all
 ```
 ![Command borrar pedido](https://i.imgur.com/NVIJAGw.png)
