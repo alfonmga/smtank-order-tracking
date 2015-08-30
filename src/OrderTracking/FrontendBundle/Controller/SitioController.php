@@ -28,10 +28,9 @@ class SitioController extends Controller
     public function contactarAction()
     {
         $request = $this->getRequest();
+        $referer = $request->headers->get('referer');
 
-        if ($request->isMethod('POST')) {
-            $referer = $request->headers->get('referer');
-            // @TODO Añadir seguridad CSRF + email_cliente && nombre_cliente deben de ser obtenido desde la BDD.
+        if ($request->isMethod('POST') && $this->isCsrfTokenValid('authenticate', $request->request->get('_csrf_token'))) {
             $message = \Swift_Message::newInstance()
                 ->setSubject('Mensaje desde página de seguimiento - PEDIDO: ' . $request->request->get('id_pedido'))
                 ->setFrom('contacto@smtank.com')
@@ -44,7 +43,7 @@ class SitioController extends Controller
             return $this->redirect($referer);
 
         } else {
-            return new RedirectResponse($this->generateUrl('order_tracking_frontend_homepage'));
+            return $this->redirect($referer);
         }
     }
 }
