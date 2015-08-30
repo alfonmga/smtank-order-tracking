@@ -14,6 +14,9 @@ services:
          arguments: ["@mailer"]
      TrackCodeGenerator:
          class: OrderTracking\BackendBundle\Services\TrackCodeGenerator
+     HistorialGenerator:
+         class: OrderTracking\BackendBundle\Services\HistorialGenerator
+         arguments: ["@doctrine.orm.entity_manager", "@service_container"]
      pedidos_subscriber:
          class: OrderTracking\BackendBundle\EventListener\PedidosSubscriber
          arguments: ["@service_container"]
