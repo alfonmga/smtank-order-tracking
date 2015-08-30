@@ -44,6 +44,7 @@ class Historial
     private $estado;
 
     /**
+     * @TODO Eliminar código de seguimiento. Refactorización pendiente debido a Don't Repeat Yourself (DRY).
      * @var string
      *
      * @ORM\Column(name="id_pedido", type="string", length=255)
