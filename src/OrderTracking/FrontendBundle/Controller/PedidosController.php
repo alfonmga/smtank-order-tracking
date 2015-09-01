@@ -35,14 +35,11 @@ class PedidosController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $id));
-
         if (!$entity) {
 
             return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
         }
-
         if(!$this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
             $log = new Log();
             $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
