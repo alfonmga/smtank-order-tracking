@@ -19,7 +19,6 @@ class DefaultController extends Controller
      */
     public function logsAction()
     {
-
         $em = $this->getDoctrine()->getManager();
         $logs = $em->getRepository('OrderTrackingBackendBundle:Log')->findBy(array(), array('fechaCheck'=>'desc'));
 
@@ -35,6 +34,7 @@ class DefaultController extends Controller
     {
         $apikey = $this->getDoctrine()->getManager()->getRepository('OrderTrackingBackendBundle:User')->find(1)
             ->getApiKey();
+
         return $this->render('@OrderTrackingBackend/Pedidos/api_index.html.twig', array(
             'apikey' => $apikey
         ));

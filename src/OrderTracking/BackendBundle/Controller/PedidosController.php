@@ -141,9 +141,7 @@ class PedidosController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pedidos entity.');
         }
@@ -171,7 +169,6 @@ class PedidosController extends Controller
             'action' => $this->generateUrl('backend_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-
         $form->add('notificar_cliente', 'checkbox', array(
             'label' => '¿Notificar cliente?',
             'attr' => array('checked' => ($this->get('kernel')->getEnvironment() === 'dev' ? false : true)),
@@ -182,6 +179,7 @@ class PedidosController extends Controller
         if ($entity->getEstadoPedido() !== 'completado') {
             $form->remove('fechaCompletado');
         }
+
         return $form;
     }
     /**
@@ -194,9 +192,7 @@ class PedidosController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Pedidos entity.');
         }
@@ -231,11 +227,9 @@ class PedidosController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->find($id);
-
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Pedidos entity.');
             }
-
             $em->remove($entity);
             $em->flush();
         }
