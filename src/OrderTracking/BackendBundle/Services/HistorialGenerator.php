@@ -92,7 +92,6 @@ class HistorialGenerator
                 $this->em->persist($historial);
                 $this->em->persist($historial2);
                 break;
-                break;
         }
     }
 }
