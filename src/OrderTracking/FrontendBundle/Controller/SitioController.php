@@ -39,9 +39,7 @@ class SitioController extends Controller
             $this->get('mailer')->send($message);
 
             $request->getSession()->getFlashBag()->add('success', 'Hemos recibido correctamente tu mensaje :-)');
-
             return $this->redirect($referer);
-
         } else {
             return $this->redirect($referer);
         }
