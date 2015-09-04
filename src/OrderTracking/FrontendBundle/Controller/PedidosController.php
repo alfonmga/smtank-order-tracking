@@ -17,7 +17,6 @@ use OrderTracking\BackendBundle\Entity\Pedidos;
  */
 class PedidosController extends Controller
 {
-
     /**
      * @Route("/", name="pedido_search_form_route")
      */
@@ -37,9 +36,13 @@ class PedidosController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('OrderTrackingBackendBundle:Pedidos')->findOneBy(array('codigoSeguimiento' => $id));
         if (!$entity) {
-
             return $this->render('OrderTrackingFrontendBundle:Frontend:404.html.twig');
         }
+
+        /**
+         *  En caso de que un usuario admin haga submit de un código de seguimiento
+         *  no se creará un log.
+         */
         if(!$this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
             $log = new Log();
             $log->setFechaCheck(date_create(date('Y-m-d H:i:s')));
