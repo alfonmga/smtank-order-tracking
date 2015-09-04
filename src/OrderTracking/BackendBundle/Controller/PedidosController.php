@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class PedidosController extends Controller
 {
-
     /**
      * Lists all Pedidos entities.
      *
@@ -256,5 +255,4 @@ class PedidosController extends Controller
             ->getForm()
         ;
     }
-
 }
