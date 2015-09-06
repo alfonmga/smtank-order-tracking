@@ -3,6 +3,7 @@
 namespace OrderTracking\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,9 +26,8 @@ class SitioController extends Controller
      *
      * @Route("/contactar", name="order_tracking_frontend_sendemail")
      */
-    public function contactarAction()
+    public function contactarAction(Request $request)
     {
-        $request = $this->getRequest();
         $referer = $request->headers->get('referer');
 
         if ($request->isMethod('POST') && $this->isCsrfTokenValid('authenticate', $request->request->get('_csrf_token'))) {
