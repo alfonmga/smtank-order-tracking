@@ -130,6 +130,7 @@ class ApiRestController extends FOSRestController
      *      }
      * },
      *   statusCodes = {
+     *      200 = "Returned when successful"
      *   }
      * )
      * @Put("/pedidos/{codigoSeguimiento}", name="_api_v1")
@@ -173,6 +174,7 @@ class ApiRestController extends FOSRestController
      *      }
      * },
      *   statusCodes = {
+     *      200 = "Returned when successful"
      *   }
      * )
      * @Delete("/pedidos/{codigoSeguimiento}", name="_api_v1")

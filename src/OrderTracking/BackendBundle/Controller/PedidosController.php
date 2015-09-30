@@ -200,6 +200,10 @@ class PedidosController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            /*
+            Añadimos el value del checkbox 'notificar_cliente' a la Session para luego tomar determinadas acciones
+            desde el EventListener/PedidosSubscriber.php
+            */
             $request->getSession()->set($entity->getId().$entity->getCodigoSeguimiento(),
                 $editForm['notificar_cliente']->getData());
             $em->flush();
