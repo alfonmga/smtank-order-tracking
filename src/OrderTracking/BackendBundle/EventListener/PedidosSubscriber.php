@@ -53,7 +53,7 @@ class PedidosSubscriber implements EventSubscriber
          * 3. Si existe historial comparamos el estado del pedido con el estado del último historial,
          *    en caso de que sean iguales no hacemos nada, si es diferente creamos un nuevo historial con el
          *    nuevo estado.
-         * 4. Notificar cliente si el checkbox es TRUE o NULL (API REST)
+         * 4. Notificar cliente si el valor del checkbox es TRUE o NULL (API REST)
          **/
         foreach ($uow->getScheduledEntityUpdates() as $updated) {
             if ($updated instanceof Pedidos) {
@@ -82,6 +82,7 @@ class PedidosSubscriber implements EventSubscriber
                         /**
                          * Si el pedido ha sido actualizado desde el backend deberiamos obtener un true or false para
                          * saber si notificar por e-mail al cliente sobre la actualización de su pedido.
+                         * En caso de que el pedido haya sido actualizado desde la API REST el valor siempre será NULL.
                          */
                        $notificarCliente = $this->container->get('request')->getSession()->get($PedidoEntity->getId().
                            $PedidoEntity->getCodigoSeguimiento());
