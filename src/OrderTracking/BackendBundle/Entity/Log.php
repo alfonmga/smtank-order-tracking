@@ -22,7 +22,7 @@ class Log
     private $id;
 
     /**
-     * @var integer
+     * @var object
      *
      * @ORM\ManyToOne(targetEntity="Pedidos", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="pedido_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
@@ -50,7 +50,7 @@ class Log
     /**
      * Set pedido
      *
-     * @param integer $pedido
+     * @param object $pedido
      * @return Log
      */
     public function setPedido($pedido)
@@ -63,7 +63,7 @@ class Log
     /**
      * Get pedido
      *
-     * @return integer 
+     * @return object
      */
     public function getPedido()
     {
