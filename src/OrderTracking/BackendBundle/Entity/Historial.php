@@ -22,7 +22,7 @@ class Historial
     private $id;
 
     /**
-     * @var integer
+     * @var object
      *
      * @ORM\ManyToOne(targetEntity="Pedidos", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
@@ -65,8 +65,8 @@ class Historial
     /**
      * Set parentId
      *
-     * @param integer $parentId
-     * @return Log
+     * @param object $parentId
+     * @return Historial
      */
     public function setParentId($parentId)
     {
@@ -78,7 +78,7 @@ class Historial
     /**
      * Get parentId
      *
-     * @return integer
+     * @return object
      */
     public function getParentId()
     {
