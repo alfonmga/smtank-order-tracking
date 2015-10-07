@@ -17,7 +17,7 @@ class BackendTest extends WebTestCase
         $crawler = $client->followRedirect();
         $this->assertGreaterThan(
             0,
-            $crawler->filter('html:contains("Nombre de usuario:")')->count()
+            $crawler->filter('html:contains("Nombre de usuario")')->count()
         );
 
         // @TODO TDD: Crear un pedido manualmente desde backend y realizar comprobación.
