@@ -25,7 +25,7 @@ Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código 
 ```
 $ git clone https://github.com/alfonsomga/smtank-order-tracking
 ```
-### Paso 2: Crear el archivo parameters.yml.dist en el directorio app/config <sub>(No te olvides de incluir la información de tu base de datos, mailer..etc)</sub>
+### Paso 2: Crear el archivo parameters.yml.dist en el directorio app/config
 ```
 parameters:
     database_driver: pdo_mysql
