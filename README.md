@@ -9,13 +9,14 @@ Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.11).
 Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
 # Capturas de imagen
 ---------------------------------
-
+### Frontend:
 ![Homepage](http://i.imgur.com/cokxVgl.png)
+![Order information](http://i.imgur.com/Jl6UF0N.png)
+![404 Page](http://i.imgur.com/BevHFhK.png)
+### Backend:
 ![Back-end order management](https://i.imgur.com/0RmhVgF.png)
 ![Back-end logs](https://i.imgur.com/saoptIY.png)
 ![API](https://i.imgur.com/HZ5DTOI.png)
-![Order information](http://i.imgur.com/Jl6UF0N.png)
-![404 Page](http://i.imgur.com/BevHFhK.png)
 
 
 
