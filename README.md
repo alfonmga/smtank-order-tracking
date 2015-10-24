@@ -88,7 +88,7 @@ Existen dos formas para añadir pedidos al sistema:
     Esta es utilizada para integrar el sistema con PayPal, Stripe..etc y dar de altas pedidos nuevos al recibir
     un pago.
     
-# API REST
+# RESTful API
 Para utilizar la API necesitas autentificarte en cada solicitud que realices.
 
 Necesitarás enviar en el header de cada solicitud lo siguiente: **'api_key' = tuapikeysecreta**
