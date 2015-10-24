@@ -83,7 +83,7 @@ Existen dos formas para añadir pedidos al sistema:
     
 2. **Segunda opción**:
 
-    Echa un vistazo a la siguiente parte (<a href="#api-rest">API REST</a>) para ver cómo añadir un pedido.
+    Echa un vistazo a la siguiente parte (<a href="#api-rest">RESTful API</a>) para ver cómo añadir un pedido.
     
     Esta es utilizada para integrar el sistema con PayPal, Stripe..etc y dar de altas pedidos nuevos al recibir
     un pago.
