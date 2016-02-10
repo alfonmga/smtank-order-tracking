@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/alfonsomga/smtank-order-tracking.svg?branch=master)](https://travis-ci.org/alfonsomga/smtank-order-tracking) [![Code Climate](https://codeclimate.com/github/alfonsomga/smtank-order-tracking/badges/gpa.svg)](https://codeclimate.com/github/alfonsomga/smtank-order-tracking)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alfonsomga/smtank-order-tracking/badges/quality-score.png?b=prod)](https://scrutinizer-ci.com/g/alfonsomga/smtank-order-tracking/?branch=prod)
 <p align="center"><img width="250" height="128" src="http://i.imgur.com/AtFS9Ie.png"/></p>
 # Sistema de seguimiento de pedidos para SMTank.com
+[![Build Status](https://travis-ci.org/alfonsomga/smtank-order-tracking.svg?branch=master)](https://travis-ci.org/alfonsomga/smtank-order-tracking) [![Code Climate](https://codeclimate.com/github/alfonsomga/smtank-order-tracking/badges/gpa.svg)](https://codeclimate.com/github/alfonsomga/smtank-order-tracking)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alfonsomga/smtank-order-tracking/badges/quality-score.png?b=prod)](https://scrutinizer-ci.com/g/alfonsomga/smtank-order-tracking/?branch=prod)
 ### Información
 Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.11).
 
