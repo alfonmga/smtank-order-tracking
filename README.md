@@ -111,10 +111,6 @@ La respuesta que deberías recibir es la siguiente:
 {
   "id": 1,
   "fecha_inicio": "2015-08-01T00:05:55+0200",
-  "nombre_cliente": "Alfonso M.",
-  "email_cliente": "hello@alfonsomga.com",
-  "nombre_producto": "Posicionamiento web",
-  "precio_producto": "129,99",
   "estado_pedido": "pendiente",
   "codigo_seguimiento": "B3Y8XVVG28M8"
 }
