@@ -9,11 +9,11 @@ Este proyecto ha sido desarrollado con Symfony2 (Versión 2.6.11).
 Ver en producción: **http://pedidos.smtank.com** (Utiliza el siguiente código de seguimiento para ver un ejemplo: **JOT6CN57664C**).
 # Capturas de imagen
 ---------------------------------
-### Frontend:
+### Páginas:
 ![Homepage](http://i.imgur.com/cokxVgl.png)
 ![Order information](http://i.imgur.com/Jl6UF0N.png)
 ![404 Page](http://i.imgur.com/BevHFhK.png)
-### Backend:
+### Panel de administración:
 ![Back-end order management](https://i.imgur.com/0RmhVgF.png)
 ![Back-end logs](https://i.imgur.com/saoptIY.png)
 ![API](https://i.imgur.com/HZ5DTOI.png)
@@ -61,23 +61,23 @@ $ php app/console doctrine:schema:create
 $ php app/console server:start
 ```
 ### Paso 7: Corre los tests
-Antes de crear un user admin y acceder al backend, comprueba que todo funcione correctamente.
+Antes de crear un user admin y acceder al panel de administración, comprueba que todo funcione correctamente.
 ```
 $ bin/phpunit -c app
 ```
 ![TDD](https://i.imgur.com/V8YwmhO.png)
-### Paso 8: Crea un usuario Admin para el Back-End
+### Paso 8: Crea un usuario Admin para el panel de administración
 ```
 $ php app/console fos:user:create Usuario prueba@ejemplo.com p@ssword
 $ php app/console fos:user:promote Usuario --super
 ```
-Acceso a la zona Back-end desde: http://127.0.0.1:8000/backend
+Accede al panel de administración desde: http://127.0.0.1:8000/backend
 ### Paso 9: Añade un pedido al sistema
 Existen dos formas para añadir pedidos al sistema:
 
 1. **Primera opción**:
 
-    Entra en el Back-end y haz click en el botón "**Añadir nuevo pedido**":
+    Entra en el panel de administración y haz click en el botón "**Añadir nuevo pedido**":
     
     ![Add order](https://i.imgur.com/E2C3SNp.png)
     
@@ -93,7 +93,7 @@ Para utilizar la API necesitas autentificarte en cada solicitud que realices.
 
 Necesitarás enviar en el header de cada solicitud lo siguiente: **'api_key' = tuapikeysecreta**
 
-Puedes encontrar tu api key secreta en el Backend (sección API) o en la base de datos (columna **api_key** de la tabla **fos_users**).
+Puedes encontrar tu api key secreta en el panel de administración (sección API) o en la base de datos (columna **api_key** de la tabla **fos_users**).
 ## Añadiendo un pedido al sistema
 Envía una solicitud **POST** a **/api/v1/pedidos** con el siguiente contenido (ejemplo):
 ```json
